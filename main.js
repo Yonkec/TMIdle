@@ -14,7 +14,7 @@ function saveGame(){
 }
 
 function loadGame(){
-    var savegame = JSON.parse(localStorage.getItem("saveData")); 
+    var savegame = JSON.parse(localStorage.getItem("TickleMilkSaveData")); 
     
     if (typeof savegame.malk !== "undefined"){
         malk = savegame.malk;
@@ -36,11 +36,12 @@ function buyMalker(){
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
 
-    localStorage.setItem("saveData",JSON.stringify(saveData)); 
+    localStorage.setItem("TickleMilkSaveData",JSON.stringify(saveData)); 
 };
 
 window.setInterval(function(){
 	
 	malkTheMalk(malkers);
+    saveGame();
 	
 }, 1000);
