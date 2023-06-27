@@ -32,12 +32,7 @@ function buyMalker(){
     if(malk >= malkerCost){
         malkers = malkers + 1;
     	malk = malk - malkerCost;
-        // document.getElementById('malk').innerHTML = malk;
-        // document.getElementById('malkers').innerHTML = malkers;
     };
-    // var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
-    // document.getElementById('malkerCost').innerHTML = nextCost;
-
 }
 
 function updateStuff(){
