@@ -1,8 +1,9 @@
-var cookies = 0;
+var malk = 0;
+var malkers = 0;
 
-function cookieClick(number){
-    cookies = cookies + number;
-    document.getElementById("cookies").innerHTML = cookies;
+function malkTheMalk(number){
+    malk = malk + number;
+    document.getElementById("malk").innerHTML = malk;
 };
 
 function saveGame(){
@@ -20,8 +21,6 @@ function loadGame(){
         malkers = savegame.malkers;
     }
 }
-
-var malkers = 0;
 
 function buyMalker(){
     var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
