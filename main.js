@@ -18,13 +18,19 @@ function saveGame(){
 function loadGame(){
     var savegame = JSON.parse(localStorage.getItem("TickleMilkSaveData")); 
     
-    if (typeof savegame.malk !== "undefined"){
+    if (typeof savegame.malk != null){
         malk = savegame.malk;
     };
 
-    if (typeof savegame.malkers !== "undefined"){
+    if (typeof savegame.malkers != null){
         malkers = savegame.malkers;
     };
+
+    document.getElementById('malk').innerHTML = malk;
+    document.getElementById('malkers').innerHTML = malkers;
+
+    var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
+    document.getElementById('malkerCost').innerHTML = nextCost;
 }
 
 function buyMalker(){
