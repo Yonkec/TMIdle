@@ -47,6 +47,11 @@ window.setInterval(function(){
 	
 	malkTheMalk(malkers);
     updateStuff();
-    saveGame();
 	
 }, 1000);
+
+window.setInterval(function(){
+
+    saveGame();
+    
+}, 10000);
