@@ -16,8 +16,11 @@ function saveGame(){
 function loadGame(){
     var savegame = JSON.parse(localStorage.getItem("saveData")); 
     
-    if (typeof savegame.cookies !== "undefined"){
+    if (typeof savegame.malk !== "undefined"){
         malk = savegame.malk;
+    }
+
+    if (typeof savegame.malkers !== "undefined"){
         malkers = savegame.malkers;
     }
 }
