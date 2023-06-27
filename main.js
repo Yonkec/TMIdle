@@ -31,9 +31,7 @@ function buyMalker(){
         document.getElementById('malkers').innerHTML = malkers;
     };
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
-    document.getElementById('malkerCost').innerHTML = malkerCost;
-
-    
+    document.getElementById('malkerCost').innerHTML = nextCost;
 
     localStorage.setItem("save",JSON.stringify(saveData)); 
 };
