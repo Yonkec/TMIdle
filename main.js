@@ -11,6 +11,8 @@ function saveGame(){
         malk: malk,
         malkers: malkers
     }
+
+    localStorage.setItem("TickleMilkSaveData",JSON.stringify(saveData)); 
 }
 
 function loadGame(){
@@ -36,7 +38,6 @@ function buyMalker(){
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
 
-    localStorage.setItem("TickleMilkSaveData",JSON.stringify(saveData)); 
 };
 
 window.setInterval(function(){
