@@ -23,7 +23,7 @@ function loadGame(){
 
 var malkers = 0;
 
-function buyCursor(){
+function buyMalker(){
     var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
     if(malkers >= malkerCost){
         malkers = malkers + 1;
@@ -39,6 +39,6 @@ function buyCursor(){
 
 window.setInterval(function(){
 	
-	cookieClick(malkers);
+	malkTheMalk(malkers);
 	
 }, 1000);
