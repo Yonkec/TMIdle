@@ -4,7 +4,7 @@ var malkers = 0;
 function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;
-};
+}
 
 function saveGame(){
     var saveData = {
@@ -25,12 +25,6 @@ function loadGame(){
     if (typeof savegame.malkers != null){
         malkers = savegame.malkers;
     };
-
-    document.getElementById('malk').innerHTML = malk;
-    document.getElementById('malkers').innerHTML = malkers;
-
-    var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
-    document.getElementById('malkerCost').innerHTML = nextCost;
 }
 
 function buyMalker(){
@@ -44,11 +38,20 @@ function buyMalker(){
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
 
-};
+}
+
+function updateStuff(){
+    document.getElementById('malk').innerHTML = malk;
+    document.getElementById('malkers').innerHTML = malkers;
+
+    var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
+    document.getElementById('malkerCost').innerHTML = nextCost;
+}
 
 window.setInterval(function(){
 	
 	malkTheMalk(malkers);
+    updateStuff();
     saveGame();
 	
 }, 1000);
