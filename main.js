@@ -24,7 +24,7 @@ function loadGame(){
 
 function buyMalker(){
     var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
-    if(malkers >= malkerCost){
+    if(malk >= malkerCost){
         malkers = malkers + 1;
     	malk = malk - malkerCost;
         document.getElementById('malk').innerHTML = malk;
@@ -32,6 +32,8 @@ function buyMalker(){
     };
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = malkerCost;
+
+    
 
     localStorage.setItem("save",JSON.stringify(saveData)); 
 };
