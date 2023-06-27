@@ -10,7 +10,7 @@ function saveGame(){
     var saveData = {
         malk: malk,
         malkers: malkers
-    }
+    };
 
     localStorage.setItem("TickleMilkSaveData",JSON.stringify(saveData)); 
 }
@@ -20,11 +20,11 @@ function loadGame(){
     
     if (typeof savegame.malk !== "undefined"){
         malk = savegame.malk;
-    }
+    };
 
     if (typeof savegame.malkers !== "undefined"){
         malkers = savegame.malkers;
-    }
+    };
 }
 
 function buyMalker(){
