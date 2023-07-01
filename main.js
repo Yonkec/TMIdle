@@ -18,6 +18,10 @@ function malkTheMalk(number){
     monsterHP -= number;
 }
 
+function resetMob(){
+    monsterHP = 100;
+}
+
 function saveGame(){
     var saveData = {
         malk: malk,
