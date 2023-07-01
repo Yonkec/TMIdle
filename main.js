@@ -66,19 +66,20 @@ function updateHealthBar(health) {
     if (health <= 0) {
         monsterImage.style.transform = "scaleY(-1)";
         monsterImage.classList.add("flashing");
-      } else {
+    } else {
         monsterImage.style.transform = "scaleY(1)";
         monsterImage.classList.remove("flashing");
-      }
-  }
+    }
+}
 
 window.setInterval(function(){
-	
-	malkTheMalk(malkers);
     updateStuff();
     updateHealthBar(monsterHP);
-	
 }, 5);
+
+window.setInterval(function(){
+	malkTheMalk(malkers);
+}, 1000);
 
 window.setInterval(function(){
 
