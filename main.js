@@ -22,6 +22,8 @@ function malkTheMalk(number){
 
     if (monsterHP <= 0){
         monsterHP = 0;
+    }
+    if (monsterHP <= 0 && mobDead == false){
         mobDead = true;
         kills++;
     }
@@ -32,7 +34,7 @@ function resetMob(){
         monsterHP = 100;
     }else{
         mobDead = false;
-        monsterHP = Math.floor(10 * Math.pow(1.01,baseMonsterHP * kills));
+        monsterHP = Math.floor(10 * Math.pow(1.02,baseMonsterHP * kills));
     }
 }
 
