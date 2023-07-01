@@ -1,6 +1,16 @@
 var malk = 0;
 var malkers = 0;
 
+const monsterImage = document.getElementById("monster");
+
+monsterImage.addEventListener("click", function() {
+    monsterImage.classList.add("shrink");
+    
+    setTimeout(function() {
+        monsterImage.classList.remove("shrink");
+    }, 200);
+});
+
 function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;

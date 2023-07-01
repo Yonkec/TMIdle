@@ -1,22 +1,28 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="interface.css" />
-        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="main.js" defer></script>
     </head>
-    <body onload="loadGame()">
-        <br/>
-        <div class="image-container">
-            <img src="rat1.png" alt="Transparent PNG" id="transparent-image">
-          </div>
-        <br/>
-        <button onclick="malkTheMalk(1)">Click Me!</button>
-		<br/>
-        Ticklemilk (ml): <span id="malk">0</span>
-		<br/>
-		<button onclick="buyMalker()">Buy Malker</button>
-		<br/>
-		Malk Generators: <span id="malkers">0</span>
-		<br/>
-		Malker Cost: <span id="malkerCost">10</span>
+    <body>
+    <!-- <body onload="loadGame()"> -->
+
+        <div class="monster-container">
+            <img src="rat1.png" alt="Clickable" id="monster" onclick="malkTheMalk(1)">
+        </div>
+        
+        <div class="row">
+            <button class="button" onclick="malkTheMalk(1)">Tickle Me!</button>
+            Ticklemilk (ml): <span class="span" id="malk">0</span>
+        </div>
+
+        <div class="row">
+            <button class="button" onclick="buyMalker()">Buy Malker</button>
+            Malk Generators: <span id="malkers">0</span>
+        </div>
+
+        <div class="row">
+            Malker Cost: <span class="span" id="malkerCost">10</span>
+        </div>
+
     </body>
 </html>
