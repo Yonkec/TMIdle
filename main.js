@@ -1,6 +1,9 @@
 var malk = 0;
 var malkers = 0;
+var baseMonsterHP = 100;
 var monsterHP = 100;
+var kills = 0;
+var mobDead = false;
 
 const monsterImage = document.getElementById("monster");
 const healthBar = document.getElementById("health-bar");
@@ -16,10 +19,21 @@ function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;
     monsterHP -= number;
+
+    if (monsterHP <= 0){
+        monsterHP = 0;
+        mobDead = true;
+        kills++;
+    }
 }
 
 function resetMob(){
-    monsterHP = 100;
+    if (kills == 0){
+        monsterHP = 100;
+    }else{
+        mobDead = false;
+        monsterHP = Math.floor(10 * Math.pow(1.02,baseMonsterHP * kills));
+    }
 }
 
 function saveGame(){
@@ -46,7 +60,7 @@ function loadGame(){
 function buyMalker(){
     var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
     if(malk >= malkerCost){
-        malkers = malkers + 1;
+        malkers++;
         malk = malk - malkerCost;
     };
 }
@@ -54,6 +68,7 @@ function buyMalker(){
 function updateStuff(){
     document.getElementById('malk').innerHTML = malk;
     document.getElementById('malkers').innerHTML = malkers;
+    document.getElementById('monsterHP').innerHTML = monsterHP;
 
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
