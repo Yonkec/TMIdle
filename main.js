@@ -8,18 +8,20 @@ var mobDead = false;
 const monsterImage = document.getElementById("monster");
 const healthBar = document.getElementById("health-bar");
 
-monsterImage.addEventListener("click", function() {
-    monsterImage.classList.add("shrink");
-    setTimeout(function() {
-        monsterImage.classList.remove("shrink");
-    }, 200);
-});
-
 function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;
     monsterHP -= number;
 
+    monsterImage.classList.add("shrink");
+    setTimeout(function() {
+        monsterImage.classList.remove("shrink");
+    }, 200);
+
+    checkDead();
+}
+
+function checkDead(){
     if (monsterHP <= 0){
         monsterHP = 0;
     }
@@ -36,6 +38,9 @@ function resetMob(){
         mobDead = false;
         monsterHP = Math.floor(10 * Math.pow(1.02,baseMonsterHP * kills));
     }
+    monsterImage.style.transform = "scaleY(1)";
+    monsterImage.classList.remove("flashing");
+    healthBar.style.backgroundColor = "green";
 }
 
 function saveGame(){
@@ -90,10 +95,6 @@ function updateHealthBar(health) {
         healthBar.style.backgroundColor = "red";
     } else if (health < 30) {
         healthBar.style.backgroundColor = "orange";
-    }else{
-        monsterImage.style.transform = "scaleY(1)";
-        monsterImage.classList.remove("flashing");
-        healthBar.style.backgroundColor = "green";
     }
 }
 
