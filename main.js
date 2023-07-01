@@ -32,7 +32,7 @@ function resetMob(){
         monsterHP = 100;
     }else{
         mobDead = false;
-        monsterHP = Math.floor(10 * Math.pow(1.02,baseMonsterHP * kills));
+        monsterHP = Math.floor(10 * Math.pow(1.01,baseMonsterHP * kills));
     }
 }
 
@@ -69,6 +69,7 @@ function updateStuff(){
     document.getElementById('malk').innerHTML = malk;
     document.getElementById('malkers').innerHTML = malkers;
     document.getElementById('monsterHP').innerHTML = monsterHP;
+    document.getElementById('totalKills').innerHTML = kills;
 
     var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
@@ -84,9 +85,13 @@ function updateHealthBar(health) {
     if (health <= 0) {
         monsterImage.style.transform = "scaleY(-1)";
         monsterImage.classList.add("flashing");
-    } else {
+        healthBar.style.backgroundColor = "red";
+    } else if (health < 30) {
+        healthBar.style.backgroundColor = "orange";
+    }else{
         monsterImage.style.transform = "scaleY(1)";
         monsterImage.classList.remove("flashing");
+        healthBar.style.backgroundColor = "green";
     }
 }
 
