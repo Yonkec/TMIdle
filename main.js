@@ -1,14 +1,12 @@
 var malk = 0;
 var malkers = 0;
-var monsterHP = 10;
+var monsterHP = 100;
 
 const monsterImage = document.getElementById("monster");
 const healthBar = document.getElementById("health-bar");
 
 monsterImage.addEventListener("click", function() {
     monsterImage.classList.add("shrink");
-    monsterHP -= 1;
-
     setTimeout(function() {
         monsterImage.classList.remove("shrink");
     }, 200);
@@ -17,6 +15,7 @@ monsterImage.addEventListener("click", function() {
 function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;
+    monsterHP -= number;
 }
 
 function saveGame(){
@@ -82,7 +81,5 @@ window.setInterval(function(){
 }, 1000);
 
 window.setInterval(function(){
-
     saveGame();
-
 }, 10000);
