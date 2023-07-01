@@ -78,7 +78,7 @@ window.setInterval(function(){
     updateStuff();
     updateHealthBar(monsterHP);
 	
-}, 1000);
+}, 5);
 
 window.setInterval(function(){
 
