@@ -31,7 +31,7 @@ function buyMalker(){
     var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
     if(malk >= malkerCost){
         malkers = malkers + 1;
-    	malk = malk - malkerCost;
+        malk = malk - malkerCost;
     };
 }
 
@@ -53,5 +53,5 @@ window.setInterval(function(){
 window.setInterval(function(){
 
     saveGame();
-    
+
 }, 10000);
