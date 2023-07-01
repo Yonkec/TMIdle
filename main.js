@@ -1,8 +1,9 @@
 var malk = 0;
 var malkers = 0;
-var monsterHP = 100;
+var monsterHP = 10;
 
 const monsterImage = document.getElementById("monster");
+const healthBar = document.getElementById("health-bar");
 
 monsterImage.addEventListener("click", function() {
     monsterImage.classList.add("shrink");
@@ -61,6 +62,14 @@ function updateHealthBar(health) {
     var maxWidth = screenWidth * 0.5; // Set the maximum width to 50% of the screen width
     var calculatedWidth = maxWidth * (monsterHP / 100); // Calculate the width based on the health percentage
     healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
+
+    if (health <= 0) {
+        monsterImage.style.transform = "scaleY(-1)";
+        monsterImage.classList.add("flashing");
+      } else {
+        monsterImage.style.transform = "scaleY(1)";
+        monsterImage.classList.remove("flashing");
+      }
   }
 
 window.setInterval(function(){

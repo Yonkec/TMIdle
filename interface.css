@@ -48,3 +48,13 @@ body {
 .shrink {
     transform: scale(1.2);
 }
+
+@keyframes flashAnimation {
+    0% { background-color: transparent; }
+    50% { background-color: rgb(201, 23, 23); }
+    100% { background-color: transparent; }
+}
+  
+.flashing {
+    animation: flashAnimation 0.5s infinite; /* Apply the flashing animation */
+}
