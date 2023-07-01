@@ -22,6 +22,14 @@ body {
     margin-bottom: 20px;
 }
 
+#health-bar {
+    width: 50%;
+    max-width: 50vw;
+    height: 20px;
+    background-color: green; /* Set the default background color */
+    border: 1px solid black; /* Add a border to the health bar */
+}
+
 .monster-container {
     /* position: absolute;
     top: 50%;

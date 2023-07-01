@@ -1,11 +1,13 @@
 var malk = 0;
 var malkers = 0;
+var monsterHP = 100;
 
 const monsterImage = document.getElementById("monster");
 
 monsterImage.addEventListener("click", function() {
     monsterImage.classList.add("shrink");
-    
+    monsterHP -= 1;
+
     setTimeout(function() {
         monsterImage.classList.remove("shrink");
     }, 200);
@@ -53,10 +55,19 @@ function updateStuff(){
     document.getElementById('malkerCost').innerHTML = nextCost;
 }
 
+function updateHealthBar(health) {
+    var healthBar = document.getElementById("health-bar");
+    var screenWidth = window.innerWidth; // Get the viewport width
+    var maxWidth = screenWidth * 0.5; // Set the maximum width to 50% of the screen width
+    var calculatedWidth = maxWidth * (monsterHP / 100); // Calculate the width based on the health percentage
+    healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
+  }
+
 window.setInterval(function(){
 	
 	malkTheMalk(malkers);
     updateStuff();
+    updateHealthBar(monsterHP);
 	
 }, 1000);
 
