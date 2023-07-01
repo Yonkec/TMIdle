@@ -1,4 +1,13 @@
-img {
-    width: 200px;
-    height: auto;
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .image-container {
+    width: 300px;
+    margin: auto;
+  }
+  
+  .image-container img {
+    opacity: 0.7; /* Set the desired transparency level (0.0 - 1.0) */
   }
