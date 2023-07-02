@@ -1,3 +1,5 @@
+import { saveGame } from "./saveload.js";
+
 var malk = 0;
 var malkers = 0;
 var baseMonsterHP = 100;
