@@ -1,5 +1,3 @@
-import { saveGame } from "./saveload.js";
-
 var malk = 0;
 var malkers = 0;
 var baseMonsterHP = 100;
@@ -15,8 +13,8 @@ function malkTheMalk(number){
     document.getElementById("malk").innerHTML = malk;
     monsterHP -= number;
 
+    monsterImage.classList.add("shrink");
     setTimeout(function() {
-        monsterImage.classList.add("shrink");
         monsterImage.classList.remove("shrink");
     }, 200);
 
@@ -102,6 +100,6 @@ window.setInterval(function(){
 	malkTheMalk(malkers);
 }, 1000);
 
-window.setInterval(function(){
-    saveGame(malk, malkers);
-}, 10000);
+// window.setInterval(function(){
+//     saveGame(malk, malkers);
+// }, 10000);
