@@ -13,12 +13,15 @@ function malkTheMalk(number){
     document.getElementById("malk").innerHTML = malk;
     monsterHP -= number;
 
-    monsterImage.classList.add("shrink");
-    setTimeout(function() {
-        monsterImage.classList.remove("shrink");
-    }, 200);
+    if (number > 0){
+        monsterImage.classList.add("shrink");
 
-    checkDead();
+        setTimeout(function() {
+            monsterImage.classList.remove("shrink");
+        }, 200);
+
+        checkDead();
+    }
 }
 
 function checkDead(){
