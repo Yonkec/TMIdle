@@ -11,10 +11,10 @@ const healthBar = document.getElementById("health-bar");
 function malkTheMalk(number){
     malk = malk + number;
     document.getElementById("malk").innerHTML = malk;
-    monsterHP -= number;
 
     if (number > 0){
         monsterImage.classList.add("shrink");
+        monsterHP -= number;
 
         setTimeout(function() {
             monsterImage.classList.remove("shrink");
