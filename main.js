@@ -13,8 +13,8 @@ function malkTheMalk(number){
     document.getElementById("malk").innerHTML = malk;
     monsterHP -= number;
 
-    monsterImage.classList.add("shrink");
     setTimeout(function() {
+        monsterImage.classList.add("shrink");
         monsterImage.classList.remove("shrink");
     }, 200);
 
@@ -41,27 +41,6 @@ function resetMob(){
     monsterImage.style.transform = "scaleY(1)";
     monsterImage.classList.remove("flashing");
     healthBar.style.backgroundColor = "green";
-}
-
-function saveGame(){
-    var saveData = {
-        malk: malk,
-        malkers: malkers
-    };
-
-    localStorage.setItem("TickleMilkSaveData",JSON.stringify(saveData)); 
-}
-
-function loadGame(){
-    var savegame = JSON.parse(localStorage.getItem("TickleMilkSaveData")); 
-    
-    if (typeof savegame.malk != null){
-        malk = savegame.malk;
-    };
-
-    if (typeof savegame.malkers != null){
-        malkers = savegame.malkers;
-    };
 }
 
 function buyMalker(){
@@ -98,6 +77,20 @@ function updateHealthBar(health) {
     }
 }
 
+function loadGame(){
+    var savegame = JSON.parse(localStorage.getItem("TMSaveData")); 
+    
+    if (typeof savegame.malk != null){
+        malk = savegame.malk;
+    };
+
+    if (typeof savegame.malkers != null){
+        malkers = savegame.malkers;
+    };
+
+    return malk, malkers;
+}
+
 window.setInterval(function(){
     updateStuff();
     updateHealthBar(monsterHP);
@@ -108,5 +101,5 @@ window.setInterval(function(){
 }, 1000);
 
 window.setInterval(function(){
-    saveGame();
+    saveGame(malk, malkers);
 }, 10000);
