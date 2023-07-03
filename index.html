@@ -17,28 +17,60 @@
         <div class="row"></div>
         <div class="row"></div>
 
-        <div class="row">
-            Ticklemilk (ml): <span class="span" id="malk">0</span>
+
+        <!-- Tab links begin -->
+        <div class="tab">
+            <button class="tablink" onclick="openTab(event, 'Fight')" id="defaultOpen">Fight</button>
+            <button class="tablink" onclick="openTab(event, 'Upgrades')">Upgrades</button>
+            <button class="tablink" onclick="openTab(event, 'Inventory')">Inventory</button>
+            <button class="tablink" onclick="openTab(event, 'Shop')">Shop</button>
+        </div>
+        
+        <div class="row"></div>
+
+        <div id="Fight" class="tabcontent">
+            <div class="row"></div>
+            <div class="row">
+                Ticklemilk (ml): <span class="span" id="malk">0</span>
+            </div>
+    
+            <div class="row">
+                <button class="button" onclick="buyMalker()">Buy Malker</button>
+                Malk Generators: <span class="span" id="malkers">0</span>
+            </div>
+    
+            <div class="row">
+                Malker Cost: <span class="span" id="malkerCost">10</span>
+            </div>
+    
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row">
+                Kills: <span class="span" id="totalKills">0</span>
+            </div>
+            <div class="row">
+                <button onclick="resetMob()">New Rat</button>
+            </div>
+    
+            <div class="row"></div>
         </div>
 
-        <div class="row">
-            <button class="button" onclick="buyMalker()">Buy Malker</button>
-            Malk Generators: <span class="span" id="malkers">0</span>
+        <div id="Upgrades" class="tabcontent">
+            <h3>Upgrades</h3>
+            <p>This is where our upgrades would be - if we had any.</p>
         </div>
-
-        <div class="row">
-            Malker Cost: <span class="span" id="malkerCost">10</span>
+        
+        <div id="Inventory" class="tabcontent">
+            <h3>Inventory</h3>
+            <p>This is where our Inventory would be - if we had one.</p>
         </div>
-
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row">
-            Kills: <span class="span" id="totalKills">0</span>
+        
+        <div id="Shop" class="tabcontent">
+            <h3>Shop</h3>
+            <p>This is where our Shop would be - if we could afford it.</p>
         </div>
-        <div class="row">
-            <button onclick="resetMob()">New Rat</button>
-        </div>
+        <!-- Tab links end -->
 
     </body>
 </html>
