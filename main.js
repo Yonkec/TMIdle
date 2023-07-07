@@ -1,3 +1,4 @@
+
 var malk = 0;
 var malkers = 0;
 var baseMonsterHP = 100;
@@ -23,8 +24,17 @@ function malkTheMalk(number){
             monsterImage.classList.remove("shrink");
         }, 200);
 
-        checkDead();
+        combat.checkDead();
     }
+}
+
+
+function buyMalker(){
+    var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
+    if(malk >= malkerCost){
+        malkers++;
+        malk = malk - malkerCost;
+    };
 }
 
 function checkDead(){
@@ -47,14 +57,6 @@ function resetMob(){
     monsterImage.style.transform = "scaleY(1)";
     monsterImage.classList.remove("flashing");
     healthBar.style.backgroundColor = "green";
-}
-
-function buyMalker(){
-    var malkerCost = Math.floor(10 * Math.pow(1.1,malkers));
-    if(malk >= malkerCost){
-        malkers++;
-        malk = malk - malkerCost;
-    };
 }
 
 function updateStuff(){

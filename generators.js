@@ -1,0 +1,1 @@
+//need to transition the various generation calculations here
