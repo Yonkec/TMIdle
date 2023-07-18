@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 
+<!--using this as a crutch to block the console errors until I get around to creating a proper favicon.ico-->
+<link rel="shortcut icon" href="#">
+
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Project Whale</title>
         <link rel="stylesheet" type="text/css" href="interface.css" />
-        <script src="main.js" type="module" ></script>
+        <script src="/src/main.js" type="module" ></script>
     </head>
     <body>
     <!-- <body onload="loadGame()"> -->
 
         <div class="monster-container">
-            <img src="rat1.png" alt="Clickable" id="monster" onclick="malkTheMalk(1)">
+            <img src="/assets/rat1.png" alt="Clickable" id="monster" onclick="mob.applyDMG(1)">
         </div>
 
         <div class="row" id="health-bar">HP (ml): <span class="span" id="monsterHP">100</span></div>

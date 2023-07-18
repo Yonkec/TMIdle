@@ -1,22 +1,19 @@
 import { openTab } from "./interface.js";
 import { Enemy } from "./enemy.js";
+import { Player } from "./ player.js";
+import { DOMCacheGetOrSet } from "../DOMcache.js";
+
 
 //references necessary for function calls from modules
 window.openTab = openTab;
 
-var malk = 0;
-var malkers = 0;
-//var baseMonsterHP = 100;
-var monsterHP = 100;
-var kills = 0;
-//var mobDead = false;
 
-var player = {
-    malk: 0.0,
-    malkers: 0
-};
+//initialize game objects
+let player = new Player();
+let mob = new Enemy(50, player);
 
-//need to refactor this into a state managed solution
+
+//need to refactor this into a state machine
 onLoad();
 
 
@@ -24,8 +21,8 @@ const monsterImage = document.getElementById("monster");
 const healthBar = document.getElementById("health-bar");
 
 
-function buyMalker(){ //need to create a player object to store the currencies and an inventory of generators
-    var malkerCost = Math.floor(10 * Math.pow(1.1,player.malkers));
+function buyMalker(){
+    let malkerCost = Math.floor(10 * Math.pow(1.1,player.malkers));
     if(player.malk >= malkerCost){
         player.malkers++;
         player.malk = player.malk - malkerCost;
@@ -40,15 +37,15 @@ function updateStuff(){
     document.getElementById('monsterHP').innerHTML = monsterHP;
     document.getElementById('totalKills').innerHTML = kills;
 
-    var nextCost = Math.floor(10 * Math.pow(1.1,malkers));
+    let nextCost = Math.floor(10 * Math.pow(1.1,malkers));
     document.getElementById('malkerCost').innerHTML = nextCost;
 }
 
 function updateHealthBar(health) {
-    var healthBar = document.getElementById("health-bar");
-    var screenWidth = window.innerWidth; // Get the viewport width
-    var maxWidth = screenWidth * 0.5; // Set the maximum width to 50% of the screen width
-    var calculatedWidth = maxWidth * (monsterHP / 100); // Calculate the width based on the health percentage
+    let healthBar = document.getElementById("health-bar");
+    let screenWidth = window.innerWidth; // Get the viewport width
+    let maxWidth = screenWidth * 0.5; // Set the maximum width to 50% of the screen width
+    let calculatedWidth = maxWidth * (monsterHP / 100); // Calculate the width based on the health percentage
     healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
 
     if (health <= 0) {
@@ -62,7 +59,6 @@ function updateHealthBar(health) {
 
 function onLoad(){
     document.getElementById("defaultOpen").click();
-    var mob = new Enemy(50, player);
 }
 
 window.setInterval(function(){
@@ -71,7 +67,7 @@ window.setInterval(function(){
 }, 5);
 
 window.setInterval(function(){
-	malkTheMalk(malkers); //swap this with class method route
+	mob.applyDMG(malkers); //need to transition to a state machine and create/update mob objects in the play state
 }, 1000);
 
 
