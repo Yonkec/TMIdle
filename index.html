@@ -15,7 +15,7 @@
     <!-- <body onload="loadGame()"> -->
 
         <div class="monster-container">
-            <img src="/assets/rat1.png" alt="Clickable" id="monster" onclick="mob.applyDMG(1)">
+            <img src="/assets/rat1.png" alt="Clickable" id="monster">
         </div>
 
         <div class="row" id="health-bar">HP (ml): <span class="span" id="monsterHP">100</span></div>
@@ -41,7 +41,7 @@
             </div>
     
             <div class="row">
-                <button class="button" onclick="buyMalker()">Buy Malker</button>
+                <button class="button" id="buyMalker">Buy Malker</button>
                 Malk Generators: <span class="span" id="malkers">0</span>
             </div>
     
@@ -55,7 +55,7 @@
                 Kills: <span class="span" id="totalKills">0</span>
             </div>
             <div class="row">
-                <button onclick="resetMob()">New Rat</button>
+                <button class="button" id="resetMob")">New Rat</button>
             </div>
     
             <div class="row"></div>

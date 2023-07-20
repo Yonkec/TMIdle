@@ -21,6 +21,8 @@ onLoad();
 const monsterImage = document.getElementById("monster");
 const healthBar = document.getElementById("health-bar");
 
+DOMCacheGetOrSet('buyMalker').addEventListener('click', () => buyMalker());
+
 
 function buyMalker(){
     let malkerCost = Math.floor(10 * Math.pow(1.1,player.malkers));
@@ -60,7 +62,7 @@ function updateHealthBar(health) {
 
 function onLoad(){
     populateDOMCache();
-    DOMCacheGetOrSet('tabButtonFight').openTab('Fight');
+    DOMCacheGetOrSet('tabButtonFight').click();
 }
 
 window.setInterval(function(){

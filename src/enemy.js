@@ -9,16 +9,21 @@ export class Enemy {
         this.player = player;
         this.monsterImage = document.getElementById("monster");
         this.healthBar = document.getElementById("health-bar");
+
+        DOMCacheGetOrSet('monster').addEventListener('click', () => this.applyDMG(1));
+        DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
     }
 
     applyDMG(dmgAMT){ //receive dmg events and apply them to the instance / trigger related on-death events
-        this.health += dmgAMT;
+        this.health -= dmgAMT;
+        this.player.malk++;
         
-        if (this.health  <= 0){
+        if (this.health  <= 0 && this.isDead == false){
             this.health  = 0;
             this.isDead = true;
-            player.kills++;
+            this.player.kills++;
             //type.kills++;
+            console.log(this.player.kills);
         }
     }
     
@@ -27,7 +32,7 @@ export class Enemy {
             this.health = this.maxHP; //reset current mob for testing purposes - remove for PRD
         }else{
             this.isDead = false;
-            this.health = this.calcHP(this.type, player); //reset mob with increased HP based on type and kill count.
+            this.health = this.calcHP(this.type, this.player); //reset mob with increased HP based on type and kill count.
         }
         this.monsterImage.style.transform = "scaleY(1)";
         this.monsterImage.classList.remove("flashing");
