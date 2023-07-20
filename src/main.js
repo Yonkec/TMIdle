@@ -2,6 +2,7 @@ import { openTab } from "./interface.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./ player.js";
 import { DOMCacheGetOrSet } from "./DOMcache.js";
+import { populateDOMCache } from "./events.js";
 
 
 //references necessary for function calls from modules
@@ -58,7 +59,8 @@ function updateHealthBar(health) {
 }
 
 function onLoad(){
-    document.getElementById("defaultOpen").click();
+    populateDOMCache();
+    DOMCacheGetOrSet('tabButtonFight').openTab('Fight');
 }
 
 window.setInterval(function(){
