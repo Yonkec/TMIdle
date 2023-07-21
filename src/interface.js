@@ -31,7 +31,7 @@ export function updateHealthBar(mob, monsterImage, healthBar) {
         monsterImage.style.transform = "scaleY(-1)";
         monsterImage.classList.add("flashing");
         healthBar.style.backgroundColor = "red";
-    } else if (mob.health < 30) {
+    } else if (mob.health < mob.maxHP * .25) {
         healthBar.style.backgroundColor = "orange";
     }
 }
