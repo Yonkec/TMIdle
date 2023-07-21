@@ -10,7 +10,5 @@ export const populateDOMCache = () => {
 
     //Generator purchase Events
     
-    
-    
 
 }

@@ -1,4 +1,4 @@
-//import { DOMCacheGetOrSet } from "./DOMcache";
+import { DOMCacheGetOrSet } from "./DOMcache.js";
 
 export class Player {
     constructor() {
