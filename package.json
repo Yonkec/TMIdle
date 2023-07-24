@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "break_infinity.js": "^2.2.0",
-    "javascript-state-machine": "^3.1.0",
-    "node.js": "^0.0.1-security",
-    "vue": "^3.3.4"
+    "machina": "^4.0.2"
   }
 }

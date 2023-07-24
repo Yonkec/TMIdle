@@ -1,7 +1,9 @@
+import machina from 'machina';
+import { DOMCacheGetOrSet } from "./DOMcache.js";
+
 import { openTab, updateHealthBar } from "./interface.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./ player.js";
-import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { populateDOMCache } from "./events.js";
 import { buyMalker } from "./generators.js";
 
