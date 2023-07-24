@@ -11,7 +11,7 @@ import { buyMalker } from "./generators.js";
 //references necessary for function calls from modules
 window.openTab = openTab;
 
-
+ 
 //initialize game objects
 let player = new Player();
 let mob = new Enemy(50, player);
