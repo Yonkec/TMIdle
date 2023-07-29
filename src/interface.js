@@ -28,7 +28,7 @@ export function updateHealthBar(mob, monsterImage, healthBar) {
     healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
 
     if (mob.health <= 0) {
-        monsterImage.style.transform = "scaleY(-1)";
+        monsterImage.classList.add("mirrored");
         monsterImage.classList.add("flashing");
         healthBar.style.backgroundColor = "red";
     } else if (mob.health < mob.maxHP * .25) {

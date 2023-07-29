@@ -16,7 +16,7 @@ export class Enemy {
 
     applyDMG(dmgAMT){ //receive dmg events and apply them to the instance / trigger related on-death events
         
-        if (this.health  <= 0 && this.isDead == false){
+        if (this.health  <= 0 + dmgAMT && this.isDead == false){
             this.health  = 0;
             this.isDead = true;
             this.player.kills++;
@@ -25,17 +25,22 @@ export class Enemy {
         } else if (this.isDead == false) {
             this.health -= dmgAMT;
             this.player.malk += dmgAMT;
+            this.monsterImage.classList.add("shrink");
+
+            setTimeout(() => {
+                this.monsterImage.classList.remove("shrink");
+            }, 150);
         }
     }
     
     resetMob(){
-        if (this.isDead == false){
+        if (this.isDead == false && this.health > 0){
             this.health = this.maxHP; //reset current mob for testing purposes - remove for PRD
         }else{
             this.isDead = false;
             this.health = this.calcHP(this.type, this.player); //reset mob with increased HP based on type and kill count.
         }
-        this.monsterImage.style.transform = "scaleY(1)";
+        this.monsterImage.classList.remove("mirrored");
         this.monsterImage.classList.remove("flashing");
         this.healthBar.style.backgroundColor = "green";
     }

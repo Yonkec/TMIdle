@@ -73,6 +73,10 @@ body {
     transform: scale(1.2);
 }
 
+.mirrored {
+    transform: scaleY(-1);
+}
+
 @keyframes flashAnimation {
     0% { background-color: transparent; }
     50% { background-color: rgb(201, 23, 23); }
