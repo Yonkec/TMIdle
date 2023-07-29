@@ -21,11 +21,9 @@ const gameFsm = new machina.Fsm({
     states: {
         idle: {
             _onEnter: function() {
-                console.log('State changed to idle');
                 // add functions that should be triggered when the idle state starts
             },
             _onExit: function() {
-                console.log('leaving idle state');
                 // add functions that should be triggered when exiting the idle state
             },
             togglestate: function() {
@@ -34,12 +32,12 @@ const gameFsm = new machina.Fsm({
         },
         battle: {
             _onEnter: function(enemy) {
-                console.log('State changed to battle');
-                // instantiate an enemy object here and trigger battle specific functions
+                this.battleInterval = window.setInterval(function(){
+                    mob.applyDMG(player.malkers); //need to transition to a state machine and create/update mob objects in the play state
+                }, 1000);
             },
             _onExit: function() {
-                console.log('leaving battle state');
-                // add functions that should be triggered when exiting the battle state
+                window.clearInterval(this.battleInterval);
             },
             togglestate: function() {
                 this.transition('idle');
@@ -95,7 +93,3 @@ window.setInterval(function(){
     updateStuff();
     updateHealthBar(mob, monsterImage, healthBar);
 }, 50);
-
-window.setInterval(function(){
-	mob.applyDMG(player.malkers); //need to transition to a state machine and create/update mob objects in the play state
-}, 1000);

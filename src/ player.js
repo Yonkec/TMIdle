@@ -6,4 +6,9 @@ export class Player {
         this.malkers = 0;
         this.kills = 0;
     }
+
+    runIdleCalcs(enemy){
+        enemy.health -= player.malkers;
+    }
 }
+
