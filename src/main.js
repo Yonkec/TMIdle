@@ -13,49 +13,54 @@ window.openTab = openTab;
 
 
 //state machine testing
+const changeStateButton = DOMCacheGetOrSet('changeState');
 
-const changeStateButton = document.getElementById('changeState');
 
-const myStateMachine = new machina.Fsm({
-    initialState: 'paused',
+const gameFsm = new machina.Fsm({
+    initialState: "idle",
     states: {
-    paused: {
-        changeState: 'running',
-        _onEnter() {
-        console.log('State changed to paused');
+        idle: {
+            _onEnter: function() {
+                console.log('State changed to idle');
+                // add functions that should be triggered when the idle state starts
+            },
+            _onExit: function() {
+                console.log('leaving idle state');
+                // add functions that should be triggered when exiting the idle state
+            },
+            togglestate: function() {
+                this.transition('battle');
+            }
+        },
+        battle: {
+            _onEnter: function(enemy) {
+                console.log('State changed to battle');
+                // instantiate an enemy object here and trigger battle specific functions
+            },
+            _onExit: function() {
+                console.log('leaving battle state');
+                // add functions that should be triggered when exiting the battle state
+            },
+            togglestate: function() {
+                this.transition('idle');
+            }
         }
-    },
-    running: {
-        changeState: 'paused',
-        _onEnter() {
-        console.log('State changed to running');
-        }
-    }
-    },
-    // Custom handler to update the button text based on the current state
-    buttonTextHandler(state) {
-        changeStateButton.textContent = state;
     }
 });
 
 // Function to update the button text based on the current state
 function updateButtonText(state) {
-    const changeStateButton = document.getElementById('changeState');
     changeStateButton.textContent = state;
 }
 
-// Add a click event listener to the button
-changeStateButton.addEventListener('click', () => {
-myStateMachine.handle('changeState');
-});
-
 // Call the updateButtonText function initially to set the initial button text
-updateButtonText(myStateMachine.state);
+updateButtonText(gameFsm.state);
+
+// Add a click event listener to the button
+changeStateButton.addEventListener('click', () => { gameFsm.handle('togglestate'); });
 
 // Set up the _onChange callback to update button text on state change
-myStateMachine.on('transition', function () {
-updateButtonText(myStateMachine.state);
-});
+gameFsm.on('transition', function () { updateButtonText(gameFsm.state); });
 
 
 //initialize game objects
