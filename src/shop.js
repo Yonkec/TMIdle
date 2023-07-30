@@ -62,35 +62,17 @@ export class Shop {
             const statsStrings = Object.entries(item.stats).map(([stat, value]) => `${stat}: ${value}`);
             statsElement.textContent = statsStrings.join(', ');
             card.appendChild(statsElement);
+
+            card.addEventListener('click', () => {
+                const previouslySelectedItem = document.querySelector('.shop-item-card-selected');
+                if (previouslySelectedItem) {
+                    previouslySelectedItem.classList.remove('shop-item-card-selected');
+                }
+                card.classList.add('shop-item-card-selected');
+            });
     
             itemsGrid.appendChild(card);
         });
-
-    // populateTable() {
-    //     const tableBody = DOMCacheGetOrSet('itemsBody');
-    
-    //     this.items.forEach(item => {
-    //         const row = document.createElement('tr');
-        
-    //         const nameCell = document.createElement('td');
-    //         nameCell.textContent = item.name;
-    //         row.appendChild(nameCell);
-        
-    //         const costCell = document.createElement('td');
-    //         costCell.textContent = item.cost;
-    //         row.appendChild(costCell);
-        
-    //         const descriptionCell = document.createElement('td');
-    //         descriptionCell.textContent = item.description;
-    //         row.appendChild(descriptionCell);
-        
-    //         const statsCell = document.createElement('td');
-    //         const statsStrings = Object.entries(item.stats).map(([stat, value]) => `${stat}: ${value}`);
-    //         statsCell.textContent = statsStrings.join(', ');
-    //         row.appendChild(statsCell);
-        
-    //         tableBody.appendChild(row);
-    //     });
     }
 
     addItemToShop(item) {
