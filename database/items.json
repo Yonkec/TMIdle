@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Wizard's Wand",
+        "cost": 200,
+        "description": "A wand?",
+        "stats": {
+        "int": 5,
+        "wis": 4,
+        "cha": 3
+        }
+    },
+    {
+        "name": "Warrior's Sword",
+        "cost": 150,
+        "description": "A swordish length of something shiny.",
+        "stats": {
+        "str": 5,
+        "sta": 4,
+        "damage": 5
+        }
+    },
+    {
+        "name": "Rogue's Dagger",
+        "cost": 100,
+        "description": "A very non-threatening piece of chalk.",
+        "stats": {
+        "agi": 5,
+        "dex": 4,
+        "damage": 3
+        }
+    },
+    {
+        "name": "Cleric's Staff",
+        "cost": 120,
+        "description": "Makes your skin tingle when pointed directly at you.",
+        "stats": {
+        "wis": 5,
+        "cha": 4,
+        "health": 3
+        }
+    },
+    {
+        "name": "Bard's Lute",
+        "cost": 80,
+        "description": "Perhaps the most offensive piece of wood you've ever seen.",
+        "stats": {
+        "cha": 5,
+        "dex": 3,
+        "int": 2
+        }
+    }
+]

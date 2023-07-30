@@ -4,6 +4,7 @@ import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { openTab, updateHealthBar } from "./interface.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./ player.js";
+import { Shop } from './shop.js';
 import { populateDOMCache } from "./events.js";
 import { buyMalker } from "./generators.js";
 
@@ -64,6 +65,7 @@ gameFsm.on('transition', function () { updateButtonText(gameFsm.state); });
 //initialize game objects
 let player = new Player();
 let mob = new Enemy(50, player);
+let shop = new Shop();
 
 const monsterImage = DOMCacheGetOrSet("monster");
 const healthBar = DOMCacheGetOrSet("health-bar");
@@ -87,6 +89,8 @@ function onLoad(){
     populateDOMCache();
     DOMCacheGetOrSet('buyMalker').addEventListener('click', () => buyMalker(player));
     DOMCacheGetOrSet('tabButtonFight').click();
+
+    shop.populateTable();
 }
 
 window.setInterval(function(){
