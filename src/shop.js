@@ -9,7 +9,7 @@ export class Shop {
         .then(response => response.json())
         .then(data => {
             this.items = data;
-            this.populateTable();
+            this.populateGrid();
         })
         .catch(error => console.error('Error:', error));
     }
@@ -31,31 +31,66 @@ export class Shop {
         }
     }
 
-    populateTable() {
-        const tableBody = DOMCacheGetOrSet('itemsBody');
+    populateGrid() {
+        const itemsGrid = DOMCacheGetOrSet('itemsGrid');
     
         this.items.forEach(item => {
-            const row = document.createElement('tr');
-        
-            const nameCell = document.createElement('td');
-            nameCell.textContent = item.name;
-            row.appendChild(nameCell);
-        
-            const costCell = document.createElement('td');
-            costCell.textContent = item.cost;
-            row.appendChild(costCell);
-        
-            const descriptionCell = document.createElement('td');
-            descriptionCell.textContent = item.description;
-            row.appendChild(descriptionCell);
-        
-            const statsCell = document.createElement('td');
+            const card = document.createElement('div');
+            card.classList.add('shop-item-card');
+    
+            const nameElement = document.createElement('h4');
+            nameElement.textContent = item.name;
+            card.appendChild(nameElement);
+    
+            // Add an image if available
+            if (item.image) {
+                const imgElement = document.createElement('img');
+                imgElement.src = item.image;
+                imgElement.classList.add('shop-item-image')
+                card.appendChild(imgElement);
+            }
+    
+            const costElement = document.createElement('p');
+            costElement.textContent = 'Cost: ' + item.cost;
+            card.appendChild(costElement);
+    
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = item.description;
+            card.appendChild(descriptionElement);
+    
+            const statsElement = document.createElement('p');
             const statsStrings = Object.entries(item.stats).map(([stat, value]) => `${stat}: ${value}`);
-            statsCell.textContent = statsStrings.join(', ');
-            row.appendChild(statsCell);
-        
-            tableBody.appendChild(row);
+            statsElement.textContent = statsStrings.join(', ');
+            card.appendChild(statsElement);
+    
+            itemsGrid.appendChild(card);
         });
+
+    // populateTable() {
+    //     const tableBody = DOMCacheGetOrSet('itemsBody');
+    
+    //     this.items.forEach(item => {
+    //         const row = document.createElement('tr');
+        
+    //         const nameCell = document.createElement('td');
+    //         nameCell.textContent = item.name;
+    //         row.appendChild(nameCell);
+        
+    //         const costCell = document.createElement('td');
+    //         costCell.textContent = item.cost;
+    //         row.appendChild(costCell);
+        
+    //         const descriptionCell = document.createElement('td');
+    //         descriptionCell.textContent = item.description;
+    //         row.appendChild(descriptionCell);
+        
+    //         const statsCell = document.createElement('td');
+    //         const statsStrings = Object.entries(item.stats).map(([stat, value]) => `${stat}: ${value}`);
+    //         statsCell.textContent = statsStrings.join(', ');
+    //         row.appendChild(statsCell);
+        
+    //         tableBody.appendChild(row);
+    //     });
     }
 
     addItemToShop(item) {

@@ -89,8 +89,6 @@ function onLoad(){
     populateDOMCache();
     DOMCacheGetOrSet('buyMalker').addEventListener('click', () => buyMalker(player));
     DOMCacheGetOrSet('tabButtonFight').click();
-
-    shop.populateTable();
 }
 
 window.setInterval(function(){

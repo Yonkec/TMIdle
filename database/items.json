@@ -7,7 +7,8 @@
         "int": 5,
         "wis": 4,
         "cha": 3
-        }
+        },
+        "image": "assets/images/snek.png"
     },
     {
         "name": "Warrior's Sword",
@@ -17,7 +18,8 @@
         "str": 5,
         "sta": 4,
         "damage": 5
-        }
+        },
+        "image": "assets/images/snek.png"
     },
     {
         "name": "Rogue's Dagger",
@@ -27,7 +29,8 @@
         "agi": 5,
         "dex": 4,
         "damage": 3
-        }
+        },
+        "image": "assets/images/snek.png"
     },
     {
         "name": "Cleric's Staff",
@@ -37,7 +40,8 @@
         "wis": 5,
         "cha": 4,
         "health": 3
-        }
+        },
+        "image": "assets/images/snek.png"
     },
     {
         "name": "Bard's Lute",
@@ -47,6 +51,7 @@
         "cha": 5,
         "dex": 3,
         "int": 2
-        }
+        },
+        "image": "assets/images/snek.png"
     }
 ]
