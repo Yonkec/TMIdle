@@ -6,7 +6,8 @@ export class Player {
         this.malk = 1000; 
         this.malkers = 0;
         this.kills = 0;
-        this.inventory = new Inventory(this); 
+        this.inventory = new Inventory(this);
+        this.inventoryStats = {};
     }
 
     removeMalk(amount) {
@@ -25,6 +26,8 @@ export class Player {
     addItemToInventory(item) {
         this.inventory.addItem(item);
         this.inventory.populateGrid(); 
+        this.inventoryStats = this.inventory.calculateTotalStats();
+        this.updateStatsTable();
     }
 
     // removeItemFromInventory(itemId) {
@@ -36,6 +39,31 @@ export class Player {
     //         return false;
     //     }
     // }
+
+    updateStatsTable() {
+        const tableBody = DOMCacheGetOrSet('statsBody');
+        
+        // clear out existing rows
+        while (tableBody.firstChild) {
+            tableBody.firstChild.remove();
+        }
+        
+        // Add rows for each stat
+        const stats = this.inventoryStats;
+        for (let [stat, value] of Object.entries(stats)) {
+            const row = document.createElement('tr');
+            
+            const nameCell = document.createElement('td');
+            nameCell.textContent = stat;
+            row.appendChild(nameCell);
+            
+            const valueCell = document.createElement('td');
+            valueCell.textContent = value;
+            row.appendChild(valueCell);
+            
+            tableBody.appendChild(row);
+        }
+    }
 }
 
 

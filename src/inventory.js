@@ -51,4 +51,27 @@ export class Inventory {
             inventoryGrid.appendChild(card);
         });
     }
+
+    calculateTotalStats() {
+
+        let totals = {
+            str: 0,
+            sta: 0,
+            agi: 0,
+            dex: 0,
+            wis: 0,
+            int: 0,
+            cha: 0,
+            health: 0,
+            damage: 0
+        };
+
+        this.items.forEach(item => {
+            Object.keys(item.stats).forEach(stat => {
+                totals[stat] += item.stats[stat];
+            });
+        });
+        
+        return totals;
+    }
 }

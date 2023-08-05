@@ -123,6 +123,7 @@ body {
 #Fight {
     height: 100%;
 }
+
 #Upgrades {
     height: 100%;
 }
@@ -208,4 +209,13 @@ body {
     text-align: center;
     color: red;
     padding: 10px;
+}
+
+#statsTable th {
+    text-align: center;
+}
+
+#statsTable td, #statsTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
