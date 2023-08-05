@@ -36,6 +36,7 @@
             <button class="tablink" id="tabButtonUpgrades">Upgrades</button>
             <button class="tablink" id="tabButtonInventory">Inventory</button>
             <button class="tablink" id="tabButtonShop">Shop</button>
+            <button class="tablink" id="tabButtonStats">Stats</button>
         </div>
         
         <div class="row"></div>
@@ -74,14 +75,27 @@
         
         <div id="Inventory" class="tabcontent">
             <h3>Inventory</h3>
-            <p>This is where our Inventory would be - if we had one.</p>
-        </div>
+            <div id="inventoryGrid" class="inventory-itemsGrid">
+                <!-- Inventory items are displayed here -->
+            </div>
+        </div>        
 
         <div id="Shop" class="tabcontent">
             <h3>Shop</h3>
+            <p id="shopMessage" class="shop-message"></p>
+
+            <div class="row"></div>
+            <button id="buyButton" class="shop-buy-button">Buy</button>
+            <div class="row"></div>
+
             <div id="itemsGrid" class="shop-itemsGrid">
-            <!-- Items inserted here -->
+            <!-- Shop items are displayed here -->
             </div>
+        </div>
+
+        <div id="Stats" class="tabcontent">
+            <h3>Stats</h3>
+            <p>This is where our player's statistics would show - if they had any.</p>
         </div>
 
         <!-- Tab links end -->

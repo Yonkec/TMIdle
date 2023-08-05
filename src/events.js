@@ -7,6 +7,7 @@ export const populateDOMCache = () => {
     DOMCacheGetOrSet('tabButtonUpgrades').addEventListener("click", (event) => openTab(event, 'Upgrades'));
     DOMCacheGetOrSet('tabButtonInventory').addEventListener("click", (event) => openTab(event, 'Inventory'));
     DOMCacheGetOrSet('tabButtonShop').addEventListener("click", (event) => openTab(event, 'Shop'));
+    DOMCacheGetOrSet('tabButtonStats').addEventListener("click", (event) => openTab(event, 'Stats'));
 
     //Generator purchase Events
     

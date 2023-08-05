@@ -1,9 +1,11 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 
 export class Shop {
-    constructor() {
+    constructor(player) {
 
         this.items = [];
+        this.player = player;
+        const buyButton = DOMCacheGetOrSet('buyButton');
 
         fetch('database/items.json')
         .then(response => response.json())
@@ -12,24 +14,36 @@ export class Shop {
             this.populateGrid();
         })
         .catch(error => console.error('Error:', error));
+
+        buyButton.addEventListener('click', () => {
+            const selectedCard = document.querySelector('.shop-item-card-selected');
+            const shopMessage = DOMCacheGetOrSet('shopMessage');
+            if (selectedCard) {
+                const itemId = selectedCard.getAttribute('data-id');
+                const resultMessage = this.buyItem(this.player, itemId);
+                shopMessage.textContent = resultMessage;
+            } else {
+                shopMessage.textContent = 'No item selected.';
+            }
+        });
     }
 
     // A method for purchasing items
     buyItem(player, itemId) {
         let item = this.items.find(item => item.id == itemId);
-
+    
         if (!item) {
-        return 'Item does not exist.';
+            return 'Item does not exist.';
         }
-        
-        if (player.malk >= item.price) {
-            player.removeMalk(item.price);
-            player.addInventory(item);
-            return `You have bought ${item.name}!`;
+    
+        if (player.removeMalk(item.cost)) {
+            player.addItemToInventory(item);
+            return `You bought ${item.name}!`;
         } else {
-            return 'You do not have enough malk.';
+            return `You do not have enough malk.  This item costs ${item.cost} and you only have ${player.malk} malk.`;
         }
     }
+    
 
     populateGrid() {
         const itemsGrid = DOMCacheGetOrSet('itemsGrid');
@@ -37,12 +51,12 @@ export class Shop {
         this.items.forEach(item => {
             const card = document.createElement('div');
             card.classList.add('shop-item-card');
+            card.setAttribute('data-id', item.id);
     
             const nameElement = document.createElement('h4');
             nameElement.textContent = item.name;
             card.appendChild(nameElement);
     
-            // Add an image if available
             if (item.image) {
                 const imgElement = document.createElement('img');
                 imgElement.src = item.image;

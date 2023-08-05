@@ -1,5 +1,6 @@
 [
     {
+        "id": "101",
         "name": "Wizard's Wand",
         "cost": 200,
         "description": "A wand?",
@@ -11,6 +12,7 @@
         "image": "assets/images/snek.png"
     },
     {
+        "id": "102",
         "name": "Warrior's Sword",
         "cost": 150,
         "description": "A swordish length of something shiny.",
@@ -22,6 +24,7 @@
         "image": "assets/images/snek.png"
     },
     {
+        "id": "103",
         "name": "Rogue's Dagger",
         "cost": 100,
         "description": "A very non-threatening piece of chalk.",
@@ -33,6 +36,7 @@
         "image": "assets/images/snek.png"
     },
     {
+        "id": "104",
         "name": "Cleric's Staff",
         "cost": 120,
         "description": "Makes your skin tingle when pointed directly at you.",
@@ -44,6 +48,7 @@
         "image": "assets/images/snek.png"
     },
     {
+        "id": "105",
         "name": "Bard's Lute",
         "cost": 80,
         "description": "Perhaps the most offensive piece of wood you've ever seen.",

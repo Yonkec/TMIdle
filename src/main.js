@@ -65,7 +65,7 @@ gameFsm.on('transition', function () { updateButtonText(gameFsm.state); });
 //initialize game objects
 let player = new Player();
 let mob = new Enemy(50, player);
-let shop = new Shop();
+let shop = new Shop(player);
 
 const monsterImage = DOMCacheGetOrSet("monster");
 const healthBar = DOMCacheGetOrSet("health-bar");
