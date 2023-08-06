@@ -1,14 +1,26 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 
 export class Enemy {
-    constructor(type, player) {
-        this.maxHP = 0;
+    constructor(player) {
+
         this.health = this.calcHP(type, player);
         this.isDead = false;
         this.type = type;
         this.player = player;
         this.monsterImage = document.getElementById("monster");
         this.healthBar = document.getElementById("health-bar");
+
+        this.baseStats = {
+            str:	1,
+            sta:	1,
+            agi:	1,
+            dex:	1,
+            wis:	1,
+            int:	1,
+            cha:	1,
+            health:	10,
+            damage:	1
+        };
 
         DOMCacheGetOrSet('monster').addEventListener('click', () => this.applyDMG(1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
@@ -45,10 +57,10 @@ export class Enemy {
         this.healthBar.style.backgroundColor = "green";
     }
 
-    calcHP(type, player){
+    calcHP(player){
         //swap to this this once I've properly constructed a type system and corresponding database:
         //return Math.floor(10 * Math.pow(1.02, type.baseHP * type.kills));
-        let newHP = Math.floor(10 * Math.pow(1.02, type * player.kills));
+        let newHP = Math.floor(10 * Math.pow(1.02, this.baseStats.health * player.kills));
         this.maxHP = newHP;
         return newHP;
     }

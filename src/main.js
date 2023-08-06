@@ -34,7 +34,7 @@ const gameFsm = new machina.Fsm({
         battle: {
             _onEnter: function(enemy) {
                 this.battleInterval = window.setInterval(function(){
-                    mob.applyDMG(player.malkers); //need to transition to a state machine and create/update mob objects in the play state
+                    mob.applyDMG(player.cachedStats.damage); //need to transition to a state machine and create/update mob objects in the play state
                 }, 1000);
             },
             _onExit: function() {
