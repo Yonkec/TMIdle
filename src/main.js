@@ -32,7 +32,7 @@ const gameFsm = new machina.Fsm({
             }
         },
         battle: {
-            _onEnter: function(enemy) {
+            _onEnter: function() {
                 this.battleInterval = window.setInterval(function(){
                     mob.applyDMG(player.cachedStats.damage); //need to transition to a state machine and create/update mob objects in the play state
                 }, 1000);
@@ -65,6 +65,7 @@ gameFsm.on('transition', function () { updateButtonText(gameFsm.state); });
 //initialize game objects
 let player = new Player();
 let mob = new Enemy(50, player);
+// eslint-disable-next-line no-unused-vars
 let shop = new Shop(player);
 
 const monsterImage = DOMCacheGetOrSet("monster");

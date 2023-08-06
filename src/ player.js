@@ -1,6 +1,6 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { Inventory } from "./inventory.js";
-import { Modifier } from "./modifiers.js";
+//import { Modifier } from "./modifiers.js";
 
 export class Player {
     constructor() {
