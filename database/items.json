@@ -9,7 +9,7 @@
         "wis": 4,
         "cha": 3
         },
-        "image": "assets/images/snek.png"
+        "image": "assets/images/wand.png"
     },
     {
         "id": "102",
@@ -33,7 +33,7 @@
         "dex": 4,
         "damage": 3
         },
-        "image": "assets/images/snek.png"
+        "image": "assets/images/dagger.png"
     },
     {
         "id": "104",
@@ -45,18 +45,18 @@
         "cha": 4,
         "health": 3
         },
-        "image": "assets/images/snek.png"
+        "image": "assets/images/clericstaff.png"
     },
     {
         "id": "105",
-        "name": "Bard's Lute",
+        "name": "Ranger's Bow",
         "cost": 80,
         "description": "Perhaps the most offensive piece of wood you've ever seen.",
         "stats": {
-        "cha": 5,
+        "agi": 5,
         "dex": 3,
-        "int": 2
+        "damage": 2
         },
-        "image": "assets/images/snek.png"
+        "image": "assets/images/bow.png"
     }
 ]
