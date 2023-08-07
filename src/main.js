@@ -69,7 +69,7 @@ let mob = new Enemy(50, player);
 let shop = new Shop(player);
 
 const monsterImage = DOMCacheGetOrSet("monster");
-const playerHealthBar = DOMCacheGetOrSet("playerHP");
+//const playerHealthBar = DOMCacheGetOrSet("playerHP");
 const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
 
 //ultimately need a state machine
