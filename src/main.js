@@ -69,7 +69,8 @@ let mob = new Enemy(50, player);
 let shop = new Shop(player);
 
 const monsterImage = DOMCacheGetOrSet("monster");
-const healthBar = DOMCacheGetOrSet("health-bar");
+const playerHealthBar = DOMCacheGetOrSet("playerHP");
+const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
 
 //ultimately need a state machine
 onLoad();
@@ -79,7 +80,7 @@ onLoad();
 function updateStuff(){
     DOMCacheGetOrSet('malk').innerHTML = player.malk;
     DOMCacheGetOrSet('malkers').innerHTML = player.malkers;
-    DOMCacheGetOrSet('monsterHP').innerHTML = mob.health;
+    DOMCacheGetOrSet('enemyHP').innerHTML = mob.health;
     DOMCacheGetOrSet('totalKills').innerHTML = player.kills;
 
     let nextCost = Math.floor(10 * Math.pow(1.1,player.malkers));
@@ -94,5 +95,5 @@ function onLoad(){
 
 window.setInterval(function(){
     updateStuff();
-    updateHealthBar(mob, monsterImage, healthBar);
+    updateHealthBar(mob, monsterImage, enemyHealthBar);
 }, 50);

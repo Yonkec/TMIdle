@@ -26,18 +26,18 @@ export class Player {
         this.modifiers = [];
     }
 
-    addModifier(modifier) {
-        this.modifiers.push(modifier);
-        this.recalculateCachedStats(Object.keys(modifier.statsAffected));
-    }
+    // addModifier(modifier) {
+    //     this.modifiers.push(modifier);
+    //     this.recalculateCachedStats(Object.keys(modifier.statsAffected));
+    // }
 
-    removeModifier(modifierId) {
-        const index = this.modifiers.findIndex(mod => mod.id === modifierId);
-        if (index !== -1) {
-            const [removedModifier] = this.modifiers.splice(index, 1);
-            this.recalculateCachedStats(Object.keys(removedModifier.statsAffected));
-        }
-    }
+    // removeModifier(modifierId) {
+    //     const index = this.modifiers.findIndex(mod => mod.id === modifierId);
+    //     if (index !== -1) {
+    //         const [removedModifier] = this.modifiers.splice(index, 1);
+    //         this.recalculateCachedStats(Object.keys(removedModifier.statsAffected));
+    //     }
+    // }
 
     getStat(statName) {
         return this.cachedStats[statName];

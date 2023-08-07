@@ -23,7 +23,7 @@ export function openTab(evt, tabName) {
 
 export function updateHealthBar(mob, monsterImage, healthBar) {
     let screenWidth = window.innerWidth; // Get the viewport width
-    let maxWidth = screenWidth * 0.5; // Set the maximum width to 50% of the screen width
+    let maxWidth = screenWidth * 0.36; // Set the maximum width to 50% of the screen width
     let calculatedWidth = maxWidth * (mob.health / mob.maxHP); // Calculate the width based on the health percentage
     healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
 

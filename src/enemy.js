@@ -8,7 +8,7 @@ export class Enemy {
         this.type = type;
         this.player = player;
         this.monsterImage = document.getElementById("monster");
-        this.healthBar = document.getElementById("health-bar");
+        this.healthBar = document.getElementById("enemy-health-bar");
 
                 this.baseStats = {
             str:	1,

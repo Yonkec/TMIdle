@@ -32,26 +32,47 @@ body {
 
 .health-bar-container {
     position: relative;
-    width: 50%;
-    max-width: 50vw;
-    height: 30px;
-    border: 1px solid black;
-    overflow-x: visible;
-    overflow-y: hidden;
+    width: 80%;
+    max-width: 80vw;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 
-#health-bar {
+.individual-health-bar {
+    position: relative;
+    width: 45%;
+    height: 100%; 
+    border: 1px solid black;
+}
+
+#player-health-bar, #enemy-health-bar{
     width: 50%;
     height: 100%;
     background-color: green; 
+    align-items:normal;
 }
 
-.health-text {
+#player-health-container .health-text {
+    text-align: left;
+    background-color: transparent;
+    color: #ffffff;
     position: absolute;
-    top: 0;
-    left: 10px;
-    background-color: #f2f2f200;
-    color: #000000;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    margin-left: 10px;
+}
+
+#enemy-health-container .health-text {
+    text-align: left;
+    background-color: transparent;
+    color: #ffffff;
+    position: absolute;
+    top: 50%;  /* Moves the top edge of the element to the center of the parent */
+    transform: translateY(-50%);  /* Moves the element up by half its height */
+    width: 100%;
+    margin-left: 10px;
 }
 
 .monster-container {
