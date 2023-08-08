@@ -7,8 +7,8 @@ export class Enemy {
         this.isDead = false;
         this.type = type;
         this.player = player;
-        this.monsterImage = document.getElementById("monster");
-        this.healthBar = document.getElementById("enemy-health-bar");
+        this.monsterImage = DOMCacheGetOrSet("monster");
+        this.healthBar = DOMCacheGetOrSet("enemy-health-bar");
 
                 this.baseStats = {
             str:	1,

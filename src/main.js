@@ -69,8 +69,9 @@ let mob = new Enemy(50, player);
 let shop = new Shop(player);
 
 const monsterImage = DOMCacheGetOrSet("monster");
-//const playerHealthBar = DOMCacheGetOrSet("playerHP");
+const playerHealthBar = DOMCacheGetOrSet("player-health-bar");
 const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
+
 
 //ultimately need a state machine
 onLoad();
@@ -95,5 +96,6 @@ function onLoad(){
 
 window.setInterval(function(){
     updateStuff();
-    updateHealthBar(mob, monsterImage, enemyHealthBar);
+    updateHealthBar(mob, enemyHealthBar, monsterImage);
+    updateHealthBar(player, playerHealthBar );
 }, 50);

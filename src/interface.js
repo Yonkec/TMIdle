@@ -21,17 +21,19 @@ export function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 } 
 
-export function updateHealthBar(mob, monsterImage, healthBar) {
+export function updateHealthBar(entity, healthBar, monsterImage) {
     let screenWidth = window.innerWidth; // Get the viewport width
     let maxWidth = screenWidth * 0.36; // Set the maximum width to 50% of the screen width
-    let calculatedWidth = maxWidth * (mob.health / mob.maxHP); // Calculate the width based on the health percentage
+    let calculatedWidth = maxWidth * (entity.health / entity.maxHP); // Calculate the width based on the health percentage
     healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
 
-    if (mob.health <= 0) {
-        monsterImage.classList.add("mirrored");
-        monsterImage.classList.add("flashing");
+    if (entity.health <= 0) {
+        if (monsterImage) {
+            monsterImage.classList.add("mirrored");
+            monsterImage.classList.add("flashing");
+        }
         healthBar.style.backgroundColor = "red";
-    } else if (mob.health < mob.maxHP * .25) {
+    } else if (entity.health < entity.maxHP * .25) {
         healthBar.style.backgroundColor = "orange";
     }
 }

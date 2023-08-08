@@ -4,11 +4,17 @@ import { Inventory } from "./inventory.js";
 
 export class Player {
     constructor() {
+        this.maxHP = 100;
+        this.health = 100;
+        this.isDead = false;
+
         this.malk = 1000; 
         this.malkers = 0;
         this.kills = 0;
         this.inventory = new Inventory(this);
         this.inventoryStats = {};
+
+        this.healthBar = DOMCacheGetOrSet("player-health-bar");
 
         this.baseStats = {
             str:	1,
