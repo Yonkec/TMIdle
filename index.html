@@ -44,7 +44,7 @@
         <!-- Tab links begin -->
         <div class="tab">
             <button class="tablink" id="tabButtonFight">Fight</button>
-            <button class="tablink" id="tabButtonUpgrades">Upgrades</button>
+            <button class="tablink" id="tabButtonStrategy">Strats</button>
             <button class="tablink" id="tabButtonInventory">Inventory</button>
             <button class="tablink" id="tabButtonShop">Shop</button>
             <button class="tablink" id="tabButtonStats">Stats</button>
@@ -79,9 +79,18 @@
             <div class="row"></div>
         </div>
 
-        <div id="Upgrades" class="tabcontent">
-            <h3>Upgrades</h3>
-            <p>This is where our upgrades would be - if we had any.</p>
+        <div id="Strategy" class="tabcontent">
+
+            <div id="player-action-container">
+
+                <div id="playerActionList">
+                    <!-- Action items are displayed here when available -->
+                </div>
+                    
+                <div class="dropzone" id="playerActionQueue"></div>
+
+            </div>
+
         </div>
         
         <div id="Inventory" class="tabcontent">

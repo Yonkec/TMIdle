@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "title": "Attack",
+        "description": "A basic attack."
+    },
+    {
+        "id": 2,
+        "title": "Defend",
+        "description": "Boost your defenses for the remainder of the round."
+    },
+    {
+        "id": 3,
+        "title": "Heal",
+        "description": "Increase your HP by a minor amount."
+    }
+]

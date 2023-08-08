@@ -7,6 +7,7 @@ import { Player } from "./ player.js";
 import { Shop } from './shop.js';
 import { populateDOMCache } from "./events.js";
 import { buyMalker } from "./generators.js";
+import { populateActionCards } from './actions.js';
 
 
 //references necessary for function calls from modules
@@ -92,6 +93,7 @@ function onLoad(){
     populateDOMCache();
     DOMCacheGetOrSet('buyMalker').addEventListener('click', () => buyMalker(player));
     DOMCacheGetOrSet('tabButtonFight').click();
+    populateActionCards();
 }
 
 window.setInterval(function(){
