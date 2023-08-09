@@ -1,11 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { DOMCacheGetOrSet } from "./DOMcache";
 
 export function populateActionCards() {
     fetch('database/actions.json')
         .then(response => response.json())
         .then(actions => {
-        // For each action in the json, create a new card and add it to the action list
-        // Eventually need to enhance this to only pull in actions that are "available" or what not at that moment
         for (let action of actions) {
             let card = document.createElement('div');
             card.className = 'actionCard';
@@ -19,18 +18,21 @@ export function populateActionCards() {
             description.textContent = action.description;
             card.appendChild(description);
 
+            let sequence = document.createElement('div');
+            sequence.className = 'sequence';
+            card.appendChild(sequence);
+
             DOMCacheGetOrSet('playerActionList').appendChild(card);
         }
     });
 
     let dragged;
-
-    document.addEventListener("drag", function(event) {
-    }, false);
+    let startIndex;
 
     document.addEventListener("dragstart", function(event) {
         dragged = event.target;
         event.target.style.opacity = .5;
+        startIndex = [...dragged.parentNode.children].indexOf(dragged);
     }, false);
 
     document.addEventListener("dragend", function(event) {
@@ -43,11 +45,42 @@ export function populateActionCards() {
 
     document.querySelector("#playerActionQueue").addEventListener("drop", function(event) {
         event.preventDefault();
-        if ( event.target.className == "dropzone" ) {
-            event.target.style.background = "";
-            dragged.parentNode.removeChild( dragged );
-            event.target.appendChild( dragged );
-        }  
-    }, false);
+    
+        const clonedNode = dragged.cloneNode(true);
+        clonedNode.style.opacity = ""; 
+    
+        let dropTarget = event.target;
+        while(dropTarget.id !== 'playerActionQueue' && !dropTarget.classList.contains('actionCard') && !dropTarget.classList.contains('queuedCard')) {
+            dropTarget = dropTarget.parentNode;
+        }
+    
+        if (dropTarget.id === 'playerActionQueue') {
+            dropTarget.appendChild(clonedNode);
+            clonedNode.classList.replace('actionCard', 'queuedCard'); 
+            clonedNode.querySelector('.sequence').textContent = dropTarget.children.length;
+        } else {
 
+            if(dragged.parentNode.id === 'playerActionQueue') {
+                const dragSequence = clonedNode.querySelector('.sequence');
+                const dropSequence = dropTarget.querySelector('.sequence');
+                
+                const tempSeq = dragSequence.textContent;
+                dragSequence.textContent = dropSequence.textContent;
+                dropSequence.textContent = tempSeq;
+    
+                // insert based on startIndex if from 'playerActionQueue'
+                dropTarget.parentNode.insertBefore(clonedNode, dropTarget.parentNode.children[startIndex]);
+            } else {
+                clonedNode.classList.replace('actionCard', 'queuedCard'); 
+                dropTarget.parentNode.insertBefore(clonedNode, dropTarget.nextSibling);
+                clonedNode.querySelector('.sequence').textContent = dropTarget.parentNode.children.length;
+            }
+        }
+    
+        if(dragged.parentNode.id === 'playerActionQueue') {
+            dragged.parentNode.removeChild(dragged);
+        }
+    
+    }, false);
+    
 }

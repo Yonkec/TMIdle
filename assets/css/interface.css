@@ -246,12 +246,24 @@ body {
     justify-content: space-between;
 }
 
-#playerActionList, #playerActionQueue {
-    /* flex-basis: 25%; */
+#playerActionList{
     display: flex;
     height: 200px; 
-    border: 1px solid black;
+    border: 1px solid silver;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#playerActionQueue {
+    flex-basis: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px; 
+    border: 1px solid silver;
+    padding: 5px;
+
+    justify-content: center;
 }
 
 .actionCard {
@@ -259,5 +271,13 @@ body {
     height: 150px;
     margin: 10px;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid red;
+}
+
+.queuedCard {
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid blueviolet;
 }
