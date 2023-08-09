@@ -272,6 +272,7 @@ body {
     margin: 10px;
     padding: 10px;
     border: 1px solid red;
+    background-color: rgb(22, 78, 89);
 }
 
 .queuedCard {
@@ -280,4 +281,5 @@ body {
     margin: 10px;
     padding: 10px;
     border: 1px solid blueviolet;
+    background-color: rgb(89, 22, 22);
 }

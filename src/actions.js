@@ -18,10 +18,6 @@ export function populateActionCards() {
             description.textContent = action.description;
             card.appendChild(description);
 
-            let sequence = document.createElement('div');
-            sequence.className = 'sequence';
-            card.appendChild(sequence);
-
             DOMCacheGetOrSet('playerActionList').appendChild(card);
         }
     });
@@ -45,42 +41,42 @@ export function populateActionCards() {
 
     document.querySelector("#playerActionQueue").addEventListener("drop", function(event) {
         event.preventDefault();
-    
+
         const clonedNode = dragged.cloneNode(true);
         clonedNode.style.opacity = ""; 
-    
+
         let dropTarget = event.target;
         while(dropTarget.id !== 'playerActionQueue' && !dropTarget.classList.contains('actionCard') && !dropTarget.classList.contains('queuedCard')) {
             dropTarget = dropTarget.parentNode;
         }
-    
+
         if (dropTarget.id === 'playerActionQueue') {
-            dropTarget.appendChild(clonedNode);
+            clonedNode.dataset.sequence = dropTarget.children.length + 1;
             clonedNode.classList.replace('actionCard', 'queuedCard'); 
-            clonedNode.querySelector('.sequence').textContent = dropTarget.children.length;
+            dropTarget.appendChild(clonedNode);
         } else {
 
             if(dragged.parentNode.id === 'playerActionQueue') {
-                const dragSequence = clonedNode.querySelector('.sequence');
-                const dropSequence = dropTarget.querySelector('.sequence');
-                
-                const tempSeq = dragSequence.textContent;
-                dragSequence.textContent = dropSequence.textContent;
-                dropSequence.textContent = tempSeq;
-    
-                // insert based on startIndex if from 'playerActionQueue'
-                dropTarget.parentNode.insertBefore(clonedNode, dropTarget.parentNode.children[startIndex]);
+                const dragSequence = clonedNode.dataset.sequence;
+                const dropSequence = dropTarget.dataset.sequence;
+
+                clonedNode.dataset.sequence = dropSequence;
+                dropTarget.dataset.sequence = dragSequence;
+
+                // Swap visual positions
+                dropTarget.parentNode.insertBefore(clonedNode, dropTarget);
+                dropTarget.parentNode.insertBefore(dropTarget, dragged);
             } else {
                 clonedNode.classList.replace('actionCard', 'queuedCard'); 
+                clonedNode.dataset.sequence = dropTarget.parentNode.children.length + 1; 
                 dropTarget.parentNode.insertBefore(clonedNode, dropTarget.nextSibling);
-                clonedNode.querySelector('.sequence').textContent = dropTarget.parentNode.children.length;
             }
         }
-    
+
         if(dragged.parentNode.id === 'playerActionQueue') {
             dragged.parentNode.removeChild(dragged);
         }
-    
+
     }, false);
-    
+
 }
