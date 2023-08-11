@@ -1,4 +1,8 @@
-import machina from 'machina';
+import { StateMachine } from "./StateMachine.js";
+import { BattleState } from "./states/BattleState.js";
+import { IdleState } from "./states/IdleState.js";
+import { DeathState } from "./states/DeathState.js";
+
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 
 import { openTab, updateHealthBar } from "./interface.js";
@@ -13,40 +17,18 @@ import { populateActionCards } from './actions.js';
 //references necessary for function calls from modules
 window.openTab = openTab;
 
-
 //state machine testing
 const changeStateButton = DOMCacheGetOrSet('changeState');
 
+//what is needed to ensure the mob reference is kept updated...need methods in the states to accept that new info?
+const states = {
+    battle: () => new BattleState(mob, player),
+    idle: () => new IdleState(mob, player),
+    death: () => new DeathState(mob, player)
+};
 
-const gameFsm = new machina.Fsm({
-    initialState: "idle",
-    states: {
-        idle: {
-            _onEnter: function() {
-                // add functions that should be triggered when the idle state starts
-            },
-            _onExit: function() {
-                // add functions that should be triggered when exiting the idle state
-            },
-            togglestate: function() {
-                this.transition('battle');
-            }
-        },
-        battle: {
-            _onEnter: function() {
-                this.battleInterval = window.setInterval(function(){
-                    mob.applyDMG(player.cachedStats.damage); //need to transition to a state machine and create/update mob objects in the play state
-                }, 1000);
-            },
-            _onExit: function() {
-                window.clearInterval(this.battleInterval);
-            },
-            togglestate: function() {
-                this.transition('idle');
-            }
-        }
-    }
-});
+const stateMachine = new StateMachine(states, changeStateButton);
+
 
 // Function to update the button text based on the current state
 function updateButtonText(state) {
@@ -54,14 +36,10 @@ function updateButtonText(state) {
 }
 
 // Call the updateButtonText function initially to set the initial button text
-updateButtonText(gameFsm.state);
+updateButtonText(stateMachine.current.name);
 
 // Add a click event listener to the button
-changeStateButton.addEventListener('click', () => { gameFsm.handle('togglestate'); });
-
-// Set up the _onChange callback to update button text on state change
-gameFsm.on('transition', function () { updateButtonText(gameFsm.state); });
-
+changeStateButton.addEventListener('click', () => { stateMachine.change('Battle'); });
 
 //initialize game objects
 let player = new Player();

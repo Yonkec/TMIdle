@@ -1,14 +1,14 @@
 
 export class StateMachine {
-    constructor(states = {}) {
+    constructor(states = {}, changeStateButton) {
         this.empty = {
-            render: function() {},
             update: function() {},
             enter: function() {},
             exit: function() {}
         };
         this.states = states;
         this.current = this.empty;
+        this.buttonText = changeStateButton;
     }
 
     change(stateName, enterParams) {
@@ -18,6 +18,7 @@ export class StateMachine {
         this.current.exit();
         this.current = this.states[stateName]();
         this.current.enter(enterParams);
+        this.buttonText.textContent = this.current.name;
     }
 
     update(dt) {
