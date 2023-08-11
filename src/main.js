@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { StateMachine } from "./StateMachine.js";
 import { BattleState } from "./states/BattleState.js";
 import { IdleState } from "./states/IdleState.js";
@@ -17,6 +18,11 @@ import { populateActionCards } from './actions.js';
 //references necessary for function calls from modules
 window.openTab = openTab;
 
+//initialize game objects
+let player = new Player();
+let mob = new Enemy(50, player);
+let shop = new Shop(player);
+
 //state machine testing
 const changeStateButton = DOMCacheGetOrSet('changeState');
 
@@ -29,23 +35,8 @@ const states = {
 
 const stateMachine = new StateMachine(states, changeStateButton);
 
-
-// Function to update the button text based on the current state
-function updateButtonText(state) {
-    changeStateButton.textContent = state;
-}
-
-// Call the updateButtonText function initially to set the initial button text
-updateButtonText(stateMachine.current.name);
-
 // Add a click event listener to the button
-changeStateButton.addEventListener('click', () => { stateMachine.change('Battle'); });
-
-//initialize game objects
-let player = new Player();
-let mob = new Enemy(50, player);
-// eslint-disable-next-line no-unused-vars
-let shop = new Shop(player);
+changeStateButton.addEventListener('click', () => { stateMachine.change('battle'); });
 
 const monsterImage = DOMCacheGetOrSet("monster");
 const playerHealthBar = DOMCacheGetOrSet("player-health-bar");

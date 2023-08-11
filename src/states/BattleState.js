@@ -9,11 +9,11 @@ export class BattleState extends BaseState {
 
     enter() {
         super.enter();
-
-        this.battleInterval = window.setInterval(function(){
-            this.mob.applyDMG(this.player.cachedStats.damage); //need to transition to a state machine and create/update mob objects in the play state
+    
+        this.battleInterval = window.setInterval(() => {
+            this.mob.applyDMG(this.player.cachedStats.damage);
         }, 1000);
-    }
+    }    
 
     exit() {
         super.exit();
