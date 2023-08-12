@@ -24,8 +24,12 @@ export class StateMachine {
         this.buttonText.textContent = this.current.name;
     }
 
-    update() {
-        this.current.update();
+    update(dt) {
+        if (this.current instanceof BattleState && this.current.isBattleOver()) {
+            this.change("death"); // Do we need to break out the different type of battle end states?
+        }else{
+            this.current.update(dt);
+        }
     }
 
     nextTurn() {

@@ -10,7 +10,7 @@ export class Enemy {
         this.monsterImage = DOMCacheGetOrSet("monster");
         this.healthBar = DOMCacheGetOrSet("enemy-health-bar");
 
-                this.baseStats = {
+        this.baseStats = {
             str:	1,
             sta:	1,
             agi:	1,

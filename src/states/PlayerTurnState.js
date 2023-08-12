@@ -8,7 +8,6 @@ export class PlayerTurnState extends BaseState {
     enter() {
         super.enter();
         console.log("In the Player Turn State");
-        // logic TBD
     }
 
     exit() {
@@ -16,8 +15,8 @@ export class PlayerTurnState extends BaseState {
         // logic TBD
     }
 
-    update() {
+    update(enemy, player) {
         super.update();
-        // logic TBD
+        enemy.applyDMG(player.cachedStats.damage);
     }
 }

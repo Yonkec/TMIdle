@@ -3,20 +3,17 @@ import { PlayerTurnState } from './PlayerTurnState.js';
 import { EnemyTurnState } from './EnemyTurnState.js';
 
 export class BattleState extends BaseState {
-    constructor(mob, player) {
+    constructor(enemy, player) {
         super('Battle');
-        this.mob = mob;
+        this.enemy = enemy;
         this.player = player;
         this.currentTurn = new PlayerTurnState();
+        this.battleTimer = 0;
     }
 
     enter() {
         super.enter();
         this.currentTurn.enter();
-    
-        this.battleInterval = window.setInterval(() => {
-            this.mob.applyDMG(this.player.cachedStats.damage);
-        }, 1000);
     }    
 
     exit() {
@@ -26,10 +23,27 @@ export class BattleState extends BaseState {
         window.clearInterval(this.battleInterval);
     }
 
-    update() {
-        this.currentTurn.update();
-        super.update();
-        
+    update(dt) {
+        this.battleTimer += dt;
+
+        if (this.battleTimer >= 1) {
+
+            this.battleTimer = 0; //reset turn
+            super.update();
+
+            this.currentTurn.update(this.enemy, this.player);
+            this.nextTurn();
+        }
+    }
+
+    isBattleOver() {
+        return this.player.isDead || this.enemy.isDead;
+    }
+
+    resetForNewBattle(player, enemy) {
+        this.enemy = enemy
+        this.player = player;
+        this.currentTurn = new PlayerTurnState();
     }
 
     nextTurn() {

@@ -93,6 +93,18 @@ export class Player {
     //     }
     // }
 
+    applyDMG(dmgAMT){ //receive dmg events and apply them to the instance / trigger related on-death events
+        
+        if (this.health  <= 0 + dmgAMT && this.isDead == false){
+            this.health  = 0;
+            this.isDead = true;
+            console.log("You died.");
+
+        } else if (this.isDead == false) {
+            this.health -= dmgAMT;
+        }
+    }
+
 }
 
 

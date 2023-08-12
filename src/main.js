@@ -19,8 +19,10 @@ window.openTab = openTab;
 
 //initialize game objects
 let player = new Player();
-let mob = new Enemy(50, player);
+let enemy = new Enemy(50, player);
 let shop = new Shop(player);
+
+let lastFrameTime = performance.now();
 
 //run initialization events
 populateDOMEventCache(player);
@@ -31,9 +33,9 @@ const changeStateButton = DOMCacheGetOrSet('changeState');
 
 //what is needed to ensure the mob reference is kept updated...need methods in the states to accept that new info?
 const states = {
-    battle: () => new BattleState(mob, player),
-    idle: () => new IdleState(mob, player),
-    death: () => new DeathState(mob, player)
+    battle: () => new BattleState(enemy, player),
+    idle: () => new IdleState(enemy, player),
+    death: () => new DeathState(enemy, player)
 };
 
 const stateMachine = new StateMachine(states, changeStateButton);
@@ -47,7 +49,34 @@ const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
 
 //get rid of this eventually
 window.setInterval(function(){
-    updateAllOfTheThings(player, mob);
-    updateHealthBar(mob, enemyHealthBar, monsterImage);
+    updateAllOfTheThings(player, enemy);
+    updateHealthBar(enemy, enemyHealthBar, monsterImage);
     updateHealthBar(player, playerHealthBar );
 }, 50);
+
+function computeDeltaTime() {
+    const now = performance.now();
+    const dt = (now - lastFrameTime) / 1000; // Keep DT in seconds
+    lastFrameTime = now;
+    return dt;
+}
+
+function gameLoop() {
+    const dt = computeDeltaTime();
+    // console.log(dt);
+
+    stateMachine.update(dt);
+    requestAnimationFrame(gameLoop); 
+}
+
+gameLoop();
+
+
+
+
+
+
+
+
+//TODO:
+//Remove all references of mob and replace them with enemy
