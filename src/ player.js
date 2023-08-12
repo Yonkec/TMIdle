@@ -1,6 +1,7 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { Inventory } from "./inventory.js";
 //import { Modifier } from "./modifiers.js";
+import { updateStatsTable } from "./interface.js";
 
 export class Player {
     constructor() {
@@ -79,7 +80,7 @@ export class Player {
         this.inventory.addItem(item);
         this.inventory.populateGrid(); 
         this.inventoryStats = this.inventory.calculateTotalStats();
-        this.updateStatsTable();
+        updateStatsTable(this.inventoryStats);
     }
 
     // removeItemFromInventory(itemId) {
@@ -92,31 +93,6 @@ export class Player {
     //     }
     // }
 
-    updateStatsTable() {
-        const tableBody = DOMCacheGetOrSet('statsBody');
-        
-        // clear out existing rows
-        while (tableBody.firstChild) {
-            tableBody.firstChild.remove();
-        }
-        
-        // Add rows for each stat
-        const stats = this.inventoryStats;
-
-        for (let [stat, value] of Object.entries(stats)) {
-            const row = document.createElement('tr');
-            
-            const nameCell = document.createElement('td');
-            nameCell.textContent = stat;
-            row.appendChild(nameCell);
-            
-            const valueCell = document.createElement('td');
-            valueCell.textContent = value;
-            row.appendChild(valueCell);
-            
-            tableBody.appendChild(row);
-        }
-    }
 }
 
 

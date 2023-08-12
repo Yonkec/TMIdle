@@ -37,3 +37,29 @@ export function updateHealthBar(entity, healthBar, monsterImage) {
         healthBar.style.backgroundColor = "orange";
     }
 }
+
+export function updateStatsTable(inventoryStats) {
+    const tableBody = DOMCacheGetOrSet('statsBody');
+    
+    // clear out existing rows
+    while (tableBody.firstChild) {
+        tableBody.firstChild.remove();
+    }
+    
+    // Add rows for each stat
+    const stats = inventoryStats;
+
+    for (let [stat, value] of Object.entries(stats)) {
+        const row = document.createElement('tr');
+        
+        const nameCell = document.createElement('td');
+        nameCell.textContent = stat;
+        row.appendChild(nameCell);
+        
+        const valueCell = document.createElement('td');
+        valueCell.textContent = value;
+        row.appendChild(valueCell);
+        
+        tableBody.appendChild(row);
+    }
+}
