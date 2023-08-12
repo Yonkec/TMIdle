@@ -38,7 +38,7 @@ export class Enemy {
             console.log(this.player.kills);
         } else if (this.isDead == false) {
             this.health -= dmgAMT;
-            this.player.malk += dmgAMT;
+            this.player.coins += dmgAMT;
             this.monsterImage.classList.add("shrink");
 
             setTimeout(() => {

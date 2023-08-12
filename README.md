@@ -1,2 +1,2 @@
-# Ticklemilk
- Incremental Prototype
+# TM Quest
+ Incremental RPG Prototype

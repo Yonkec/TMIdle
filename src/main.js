@@ -45,6 +45,7 @@ const monsterImage = DOMCacheGetOrSet("monster");
 const playerHealthBar = DOMCacheGetOrSet("player-health-bar");
 const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
 
+//get rid of this eventually
 window.setInterval(function(){
     updateAllOfTheThings(player, mob);
     updateHealthBar(mob, enemyHealthBar, monsterImage);

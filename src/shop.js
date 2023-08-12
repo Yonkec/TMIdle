@@ -36,11 +36,11 @@ export class Shop {
             return 'Item does not exist.';
         }
     
-        if (player.removeMalk(item.cost)) {
+        if (player.Coins(item.cost)) {
             player.addItemToInventory(item);
             return `You bought ${item.name}!`;
         } else {
-            return `You do not have enough malk.  This item costs ${item.cost} and you only have ${player.malk} malk.`;
+            return `You do not have enough coins.  This item costs ${item.cost} and you only have ${player.coins} coins.`;
         }
     }
     

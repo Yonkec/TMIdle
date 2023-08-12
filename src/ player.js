@@ -9,8 +9,8 @@ export class Player {
         this.health = 100;
         this.isDead = false;
 
-        this.malk = 1000; 
-        this.malkers = 0;
+        this.coins = 1000; 
+        this.coinGens = 0;
         this.kills = 0;
         this.inventory = new Inventory(this);
         this.inventoryStats = {};
@@ -62,17 +62,17 @@ export class Player {
         }
     }
     
-    removeMalk(amount) {
-        if (this.malk >= amount) {
-            this.malk -= amount;
+    removeCoins(amount) {
+        if (this.coins >= amount) {
+            this.coins -= amount;
             return true;
         } else {
             return false;
         }
     }
 
-    addMalk(amount) {
-        this.malk += amount;
+    addCoins(amount) {
+        this.coins += amount;
     }
 
 

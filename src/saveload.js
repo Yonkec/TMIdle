@@ -1,7 +1,7 @@
-export function saveGame(malk, malkers){
+export function saveGame(coins, coinGens){
     var saveData = {
-        malk: malk,
-        malkers: malkers
+        coins: coins,
+        coinGens: coinGens
     };
 
     localStorage.setItem("TMSaveData",JSON.stringify(saveData)); 
@@ -10,13 +10,13 @@ export function saveGame(malk, malkers){
 export function loadGame(){
     var savegame = JSON.parse(localStorage.getItem("TMSaveData")); 
     
-    if (typeof savegame.malk != null){
-        malk = savegame.malk;
+    if (typeof savegame.coins != null){
+        coins = savegame.coins;
     };
 
-    if (typeof savegame.malkers != null){
-        malkers = savegame.malkers;
+    if (typeof savegame.coinGens != null){
+        coinGens = savegame.coinGens;
     };
 
-    return malk, malkers;
+    return coins, coinGens;
 }
