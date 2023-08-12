@@ -1,4 +1,6 @@
 
+import { BattleState } from "./states/BattleState";
+
 export class StateMachine {
     constructor(states = {}, changeStateButton) {
         this.empty = {
@@ -9,6 +11,7 @@ export class StateMachine {
         this.states = states;
         this.current = this.empty;
         this.buttonText = changeStateButton;
+    
     }
 
     change(stateName, enterParams) {
@@ -21,7 +24,14 @@ export class StateMachine {
         this.buttonText.textContent = this.current.name;
     }
 
-    update(dt) {
-        this.current.update(dt);
+    update() {
+        this.current.update();
+    }
+
+    nextTurn() {
+        if (this.current instanceof BattleState) {
+            this.current.nextTurn();
+            this.buttonText.textContent = this.current.currentTurn.name;
+        }
     }
 }
