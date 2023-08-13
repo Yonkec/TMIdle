@@ -90,8 +90,6 @@ export class ActionQueueManager {
     updateActionQueue() {
         this.actionQueue = Array.from(DOMCacheGetOrSet('playerActionQueue').children)
             .filter(child => child.tagName === 'DIV')
-            .map(child => {
-                return JSON.parse(child.dataset.actionObject);
-            });
+            .map(child => JSON.parse(child.dataset.actionObject));
     }    
 }

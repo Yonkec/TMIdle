@@ -1,4 +1,5 @@
 import { BaseState } from './BaseState.js';
+import { applyDMG } from '../combat.js';
 
 export class EnemyTurnState extends BaseState {
     constructor() {
@@ -17,6 +18,6 @@ export class EnemyTurnState extends BaseState {
 
     update(enemy, player) {
         super.update();
-        player.applyDMG(enemy.baseStats.damage);
+        applyDMG(player, enemy.baseStats.damage);
     }
 }
