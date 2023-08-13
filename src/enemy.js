@@ -19,7 +19,7 @@ export class Enemy {
             int:	1,
             cha:	1,
             health:	10,
-            damage:	1
+            damage:	2
         };
 
         this.health = this.calcHP(type, player);

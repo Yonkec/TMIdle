@@ -6,14 +6,14 @@ export class BaseState {
     }
 
     enter() {
-        console.log(`Entering ${this.name} state.`);
+        //console.log(`Entering ${this.name} state.`);
     }
 
     exit() {
-        console.log(`Exiting ${this.name} state.`);
+        //console.log(`Exiting ${this.name} state.`);
     }
 
     update() {
-        console.log(`Updating ${this.name} state.`);
+        //console.log(`Updating ${this.name} state.`);
     }
 }

@@ -7,7 +7,7 @@ export class EnemyTurnState extends BaseState {
 
     enter() {
         super.enter();
-        console.log("In the Enemy Turn State");
+        //console.log("In the Enemy Turn State");
     }
 
     exit() {

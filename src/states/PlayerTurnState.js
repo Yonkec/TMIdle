@@ -7,7 +7,7 @@ export class PlayerTurnState extends BaseState {
 
     enter() {
         super.enter();
-        console.log("In the Player Turn State");
+        //console.log("In the Player Turn State");
     }
 
     exit() {
@@ -15,8 +15,12 @@ export class PlayerTurnState extends BaseState {
         // logic TBD
     }
 
-    update(enemy, player) {
+    update(enemy, player, actionQueue) {
         super.update();
+
+        // console.log(actionQueue.currentActionIndex);
+        console.log(`Calling the ${actionQueue.returnNextAction().title} action.`);
+
         enemy.applyDMG(player.cachedStats.damage);
     }
 }

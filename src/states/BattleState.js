@@ -3,12 +3,13 @@ import { PlayerTurnState } from './PlayerTurnState.js';
 import { EnemyTurnState } from './EnemyTurnState.js';
 
 export class BattleState extends BaseState {
-    constructor(enemy, player) {
+    constructor(enemy, player, actionQueue) {
         super('Battle');
         this.enemy = enemy;
         this.player = player;
         this.currentTurn = new PlayerTurnState();
         this.battleTimer = 0;
+        this.actionQueue = actionQueue;
     }
 
     enter() {
@@ -31,7 +32,7 @@ export class BattleState extends BaseState {
             this.battleTimer = 0; //reset turn
             super.update();
 
-            this.currentTurn.update(this.enemy, this.player);
+            this.currentTurn.update(this.enemy, this.player, this.actionQueue);
             this.nextTurn();
         }
     }

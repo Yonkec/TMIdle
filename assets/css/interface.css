@@ -241,45 +241,44 @@ body {
     padding: 8px;
 }
 
-.player-action-container {
+#player-action-container {
     display: flex;
     justify-content: space-between;
 }
 
-#playerActionList{
-    display: flex;
-    height: 200px; 
-    border: 1px solid silver;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
+#playerActionList h3,
+#playerActionQueue h3 {
+    width: 100%;
+    margin: 0; /* Remove margin to ensure text is at the very top */
+    text-align: center;
 }
 
+#playerActionList,
 #playerActionQueue {
-    flex-basis: 25%;
+    flex-basis: 35%;
     display: flex;
-    flex-wrap: wrap;
-    height: 400px; 
+    flex-direction: column; /* Items stack vertically */
+    align-items: flex-start; /* Align items to the start of the container's cross axis */
+    height: 800px;
     border: 1px solid silver;
     padding: 5px;
+}
 
-    justify-content: center;
+.actionCard,
+.queuedCard {
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .actionCard {
-    width: 300px;
-    height: 150px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid red;
+    border: 5px solid red;
     background-color: rgb(22, 78, 89);
 }
 
 .queuedCard {
-    width: 300px;
-    height: 150px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid blueviolet;
+    border: 1px solid rgb(140, 236, 21);
     background-color: rgb(89, 22, 22);
 }
+

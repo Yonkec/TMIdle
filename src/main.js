@@ -5,78 +5,53 @@ import { IdleState } from "./states/IdleState.js";
 import { DeathState } from "./states/DeathState.js";
 
 import { DOMCacheGetOrSet } from "./DOMcache.js";
+import { computeDeltaTime } from "./utils.js";
 
 import { openTab, updateHealthBar } from "./interface.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./ player.js";
 import { Shop } from './shop.js';
 import { populateDOMEventCache, updateAllOfTheThings } from "./events.js";
-import { populateActionCards } from './actions.js';
+import { ActionQueueManager } from './actions.js';
 
-//references necessary for function calls from modules
+// references necessary for function calls from modules
 window.openTab = openTab;
 
-
-//initialize game objects
-let player = new Player();
-let enemy = new Enemy(50, player);
-let shop = new Shop(player);
-
-let lastFrameTime = performance.now();
-
-//run initialization events
-populateDOMEventCache(player);
-populateActionCards();
-
-
+// initialize vars
 const changeStateButton = DOMCacheGetOrSet('changeState');
-
-//what is needed to ensure the mob reference is kept updated...need methods in the states to accept that new info?
-const states = {
-    battle: () => new BattleState(enemy, player),
-    idle: () => new IdleState(enemy, player),
-    death: () => new DeathState(enemy, player)
-};
-
-const stateMachine = new StateMachine(states, changeStateButton);
-
-// Add a click event listener to the button
-changeStateButton.addEventListener('click', () => { stateMachine.change('battle'); });
-
 const monsterImage = DOMCacheGetOrSet("monster");
 const playerHealthBar = DOMCacheGetOrSet("player-health-bar");
 const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
+const states = {
+    battle: () => new BattleState(enemy, player, actionQueueManager),
+    idle: () => new IdleState(enemy, player, actionQueueManager),
+    death: () => new DeathState(enemy, player, actionQueueManager)
+};
 
-//get rid of this eventually
-window.setInterval(function(){
-    updateAllOfTheThings(player, enemy);
-    updateHealthBar(enemy, enemyHealthBar, monsterImage);
-    updateHealthBar(player, playerHealthBar );
-}, 50);
+// initialize game objects
+let player = new Player();
+let enemy = new Enemy(50, player);
+let shop = new Shop(player);
+const actionQueueManager = new ActionQueueManager();
+const stateMachine = new StateMachine(states, changeStateButton);
 
-function computeDeltaTime() {
-    const now = performance.now();
-    const dt = (now - lastFrameTime) / 1000; // Keep DT in seconds
-    lastFrameTime = now;
-    return dt;
-}
+// run initialization events
+populateDOMEventCache(player);
+actionQueueManager.populateActionCards();
+
+// add a click event listener to the button
+changeStateButton.addEventListener('click', () => { stateMachine.change('battle'); });
 
 function gameLoop() {
     const dt = computeDeltaTime();
-    // console.log(dt);
+
+    updateAllOfTheThings(player, enemy);
+    updateHealthBar(enemy, enemyHealthBar, monsterImage);
+    updateHealthBar(player, playerHealthBar );
 
     stateMachine.update(dt);
+
     requestAnimationFrame(gameLoop); 
 }
 
 gameLoop();
-
-
-
-
-
-
-
-
-//TODO:
-//Remove all references of mob and replace them with enemy
