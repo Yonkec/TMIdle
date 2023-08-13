@@ -6,3 +6,9 @@ export function computeDeltaTime() {
     lastFrameTime = now;
     return dt;
 }
+
+export function swapElementsInArray(array, indexA, indexB) {
+    const newArray = [...array];
+    [newArray[indexA], newArray[indexB]] = [newArray[indexB], newArray[indexA]];
+    return newArray;
+}
