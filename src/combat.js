@@ -10,6 +10,13 @@ export function applyDMG(unit, dmgAmount){
 
     } else if (unit.isDead == false) {
         unit.health -= dmgAMT;
+        if(unit.monsterImage){
+            unit.monsterImage.classList.add("shrink");
+
+            setTimeout(() => {
+                unit.monsterImage.classList.remove("shrink");
+            }, 150);
+        }
     }
 
     return dmgAMT;

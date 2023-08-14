@@ -17,6 +17,7 @@ export class Enemy {
             dex:	1,
             wis:	1,
             int:	1,
+            
             cha:	1,
             health:	10,
             damage:	2
@@ -26,25 +27,6 @@ export class Enemy {
 
         DOMCacheGetOrSet('monster').addEventListener('click', () => this.applyDMG(1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
-    }
-
-    applyDMG(dmgAMT){ //receive dmg events and apply them to the instance / trigger related on-death events
-        
-        if (this.health  <= 0 + dmgAMT && this.isDead == false){
-            this.health  = 0;
-            this.isDead = true;
-            this.player.kills++;
-            //type.kills++; //is it necessary to break out mobs by type and track statistics separately?
-            console.log(this.player.kills);
-        } else if (this.isDead == false) {
-            this.health -= dmgAMT;
-            this.player.coins += dmgAMT;
-            this.monsterImage.classList.add("shrink");
-
-            setTimeout(() => {
-                this.monsterImage.classList.remove("shrink");
-            }, 150);
-        }
     }
     
     resetMob(){
