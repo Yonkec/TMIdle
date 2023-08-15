@@ -36,7 +36,7 @@ export class Shop {
             return 'Item does not exist.';
         }
     
-        if (player.Coins(item.cost)) {
+        if (player.removeCoins(item.cost)) {
             player.addItemToInventory(item);
             return `You bought ${item.name}!`;
         } else {
