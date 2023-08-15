@@ -1,4 +1,5 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
+import { applyDMG } from "./combat.js";
 
 export class Enemy {
     constructor(type, player) {
@@ -17,7 +18,7 @@ export class Enemy {
             dex:	1,
             wis:	1,
             int:	1,
-            
+
             cha:	1,
             health:	10,
             damage:	2
@@ -25,7 +26,7 @@ export class Enemy {
 
         this.health = this.calcHP(type, player);
 
-        DOMCacheGetOrSet('monster').addEventListener('click', () => this.applyDMG(1));
+        DOMCacheGetOrSet('monster').addEventListener('click', () => applyDMG(this, 1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
     }
     
