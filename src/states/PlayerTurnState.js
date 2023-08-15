@@ -16,7 +16,7 @@ export class PlayerTurnState extends BaseState {
         // logic TBD
     }
 
-    update(enemy, player, actionQueue) {
+    update(enemy, player) {
         super.update();
 
         // console.log(actionQueue.currentActionIndex);
