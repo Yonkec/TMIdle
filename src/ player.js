@@ -2,6 +2,7 @@ import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { Inventory } from "./inventory.js";
 //import { Modifier } from "./modifiers.js";
 import { updateStatsTable } from "./interface.js";
+import { loadJSONFile } from "./utils.js";
 
 export class Player {
     constructor() {
@@ -17,19 +18,11 @@ export class Player {
 
         this.healthBar = DOMCacheGetOrSet("player-health-bar");
 
-        this.baseStats = {
-            str:	1,
-            sta:	1,
-            agi:	1,
-            dex:	1,
-            wis:	1,
-            int:	1,
-            cha:	1,
-            health:	10,
-            damage:	1
-        };
+        loadJSONFile('database/player.json').then(data => { 
+            this.baseStats = data; 
+            this.cachedStats = { ...this.baseStats };
+        });
 
-        this.cachedStats = { ...this.baseStats };
         this.modifiers = [];
     }
 

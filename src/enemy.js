@@ -1,5 +1,6 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { applyDMG } from "./combat.js";
+import { loadJSONFile } from "./utils.js";
 
 export class Enemy {
     constructor(type, player) {
@@ -11,20 +12,12 @@ export class Enemy {
         this.monsterImage = DOMCacheGetOrSet("monster");
         this.healthBar = DOMCacheGetOrSet("enemy-health-bar");
 
-        this.baseStats = {
-            str:	1,
-            sta:	1,
-            agi:	1,
-            dex:	1,
-            wis:	1,
-            int:	1,
+        this.baseStats = [];
+        loadJSONFile('database/goblinbrawler.json').then(data => { 
+                this.baseStats = data; 
+                this.health = this.calcHP(type, player);
+        });
 
-            cha:	1,
-            health:	10,
-            damage:	2
-        };
-
-        this.health = this.calcHP(type, player);
 
         DOMCacheGetOrSet('monster').addEventListener('click', () => applyDMG(this, 1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
@@ -45,6 +38,7 @@ export class Enemy {
     calcHP(type, player){
         //swap to this this once I've properly constructed a type system and corresponding database:
         //return Math.floor(10 * Math.pow(1.02, type.baseHP * type.kills));
+        console.log(this.baseStats.health);
         let newHP = Math.floor(10 * Math.pow(1.02, this.baseStats.health * player.kills));
         this.maxHP = newHP;
         return newHP;

@@ -12,3 +12,13 @@ export function swapElementsInArray(array, indexA, indexB) {
     [newArray[indexA], newArray[indexB]] = [newArray[indexB], newArray[indexA]];
     return newArray;
 }
+
+export async function loadJSONFile(filename) {
+    try {
+        const response = await fetch(filename);
+        const jsonData = await response.json();
+        return jsonData;
+    } catch (error) {
+        console.error('Error loading JSON file:', error);
+    }
+}
