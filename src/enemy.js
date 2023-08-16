@@ -38,7 +38,6 @@ export class Enemy {
     calcHP(type, player){
         //swap to this this once I've properly constructed a type system and corresponding database:
         //return Math.floor(10 * Math.pow(1.02, type.baseHP * type.kills));
-        console.log(this.baseStats.health);
         let newHP = Math.floor(10 * Math.pow(1.02, this.baseStats.health * player.kills));
         this.maxHP = newHP;
         return newHP;
