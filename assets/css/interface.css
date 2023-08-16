@@ -1,5 +1,5 @@
 :root {
-    --default-text-color: rgba(255, 255, 255, 0.639);
+    --default-text-color: rgba(255, 255, 255, 0.857);
 }
 
 
@@ -13,7 +13,7 @@ body {
     color: var(--default-text-color);
     /* background-image: linear-gradient(346deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 22%,rgba(140, 140, 140,0.04) 22%, rgba(140, 140, 140,0.04) 69%,rgba(225, 225, 225,0.04) 69%, rgba(225, 225, 225,0.04) 100%),linear-gradient(31deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 42%,rgba(140, 140, 140,0.04) 42%, rgba(140, 140, 140,0.04) 85%,rgba(225, 225, 225,0.04) 85%, rgba(225, 225, 225,0.04) 100%),linear-gradient(55deg, rgba(55, 55, 55,0.04) 0%, rgba(55, 55, 55,0.04) 13%,rgba(140, 140, 140,0.04) 13%, rgba(140, 140, 140,0.04) 72%,rgba(225, 225, 225,0.04) 72%, rgba(225, 225, 225,0.04) 100%),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0)); */
     background-image: 
-    linear-gradient(25deg, transparent 0%, transparent 11%,rgba(156, 156, 156, 0.12) 11%, rgba(156, 156, 156,0.12) 81%,transparent 42%, transparent 40%),
+    linear-gradient(25deg, transparent 0%, transparent 11%,rgba(156, 156, 156, 0.05) 11%, rgba(156, 156, 156,0.12) 81%,transparent 42%, transparent 40%),
     linear-gradient(40deg, transparent 0%, transparent 58%,rgba(156, 156, 156,0.05) 18%, rgba(156, 156, 156,0.05) 64%,transparent 70%, transparent 90%),
     linear-gradient(80deg, transparent 0%, transparent 28%,rgba(156, 156, 156,0.05) 18%, rgba(156, 156, 156,0.05) 44%,transparent 40%, transparent 80%),
     linear-gradient(175deg, transparent 0%, transparent 63%,rgba(156, 156, 156,0.05) 13%, rgba(156, 156, 156,0.05) 22%,transparent 25%, transparent 50%),
@@ -34,8 +34,11 @@ body::before {
     z-index: -1;
 }
 
-.inlineButton {
+.inlineButton, .button {
     margin-right: 20px;
+    background-color: #333;
+    color: #fff; 
+    border-radius: 8px;
 }
 
 .span {
@@ -75,7 +78,6 @@ body::before {
 #player-health-container .health-text {
     text-align: left;
     background-color: transparent;
-    color: #ffffff;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -86,7 +88,6 @@ body::before {
 #enemy-health-container .health-text {
     text-align: left;
     background-color: transparent;
-    color: #ffffff;
     position: absolute;
     top: 50%;  /* Moves the top edge of the element to the center of the parent */
     transform: translateY(-50%);  /* Moves the element up by half its height */
@@ -140,6 +141,7 @@ body::before {
     padding: 14px 16px;
     margin: 5px;
     width: 100px;
+    color: var(--default-text-color);
 }
 
 .tab button:hover {
@@ -211,15 +213,15 @@ body::before {
     width: 200px;
     padding: 10px;
     margin: 10px auto;
-    background: darkgreen;
+    background: rgb(1, 72, 1);
+    color: var(--default-text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: white;
 }
 
 .shop-buy-button:hover {
-    background: limegreen;
+    background: rgb(1, 110, 1);
 }
 
 .inventory-itemsGrid {
