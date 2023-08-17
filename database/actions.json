@@ -1,17 +1,65 @@
-[
-    {
-        "id": 1,
-        "title": "Attack",
-        "description": "A basic attack."
-    },
-    {
-        "id": 2,
-        "title": "Defend",
-        "description": "Boost your defenses for the remainder of the round."
-    },
-    {
-        "id": 3,
-        "title": "Heal",
-        "description": "Increase your HP by a minor amount."
-    }
-]
+{
+    "attacks": [
+        {
+            "id": 1,
+            "title": "Basic Attack",
+            "description": "A basic attack.",
+            "damageType": "physical",
+            "damage": 5
+        },
+        {
+            "id": 2,
+            "title": "Fireball",
+            "description": "Cast a fiery projectile.",
+            "damageType": "fire",
+            "damage": 8
+        }
+    ],
+    "defensives": [
+        {
+            "id": 3,
+            "title": "Defend",
+            "description": "Boost your defenses for the remainder of the round.",
+            "defenseType": "shield",
+            "defenseValue": 3
+        },
+        {
+            "id": 4,
+            "title": "Dodge",
+            "description": "Attempt to evade incoming attacks.",
+            "defenseType": "dodge",
+            "defenseValue": 0.2
+        }
+    ],
+    "heals": [
+        {
+            "id": 5,
+            "title": "Healing Touch",
+            "description": "Restore a small amount of health.",
+            "healAmount": 10
+        },
+        {
+            "id": 6,
+            "title": "Potion",
+            "description": "Consume a healing potion.",
+            "healAmount": 20
+        }
+    ],
+    "utilities": [
+        {
+            "id": 7,
+            "title": "Haste",
+            "description": "Greatly increase your agility for a short duration.",
+            "effectDuration": 5,
+            "statType": "agi",
+            "statBoost": 5
+        },
+        {
+            "id": 8,
+            "title": "Clarity",
+            "description": "Temporarily boost the rate of your mana regeration.",
+            "effectDuration": 3,
+            "manaAmount": 1
+        }
+    ]
+}

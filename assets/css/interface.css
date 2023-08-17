@@ -284,9 +284,13 @@ body::before {
 .actionCard,
 .queuedCard {
     width: 300px;
-    height: 100px;
+    height: 60px;
     margin: 10px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
 }
 
 .actionCard {
@@ -299,3 +303,36 @@ body::before {
     background-color: rgb(89, 22, 22);
 }
 
+.actionCard h2, .actionCard p, .actionCard .type {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.popup {
+    position: absolute;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 100px;
+    z-index: 1;
+    transition: opacity 0.3s;
+    overflow: hidden;
+    text-align: center;
+}
+
+.actionCard:hover .popup {
+    display: block;
+    opacity: 1;
+}
+
+.description, .category {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -10,24 +10,36 @@ export class ActionQueueManager {
     populateActionCards() {
         fetch('database/actions.json')
             .then(response => response.json())
-            .then(actions => {
-                for (let action of actions) {
-                    let card = document.createElement('div');
-                    card.className = 'actionCard';
-                    card.draggable = true;
-                    card.dataset.actionObject = JSON.stringify(action);
-
-                    let title = document.createElement('h2');
-                    title.textContent = action.title;
-                    card.appendChild(title);
-
-                    let description = document.createElement('p');
-                    description.textContent = action.description;
-                    card.appendChild(description);
-
-                    DOMCacheGetOrSet('playerActionList').appendChild(card);
+            .then(abilityCategories => {
+                for (let category in abilityCategories) {
+                    for (let ability of abilityCategories[category]) {
+                        let card = document.createElement('div');
+                        card.className = 'actionCard';
+                        card.draggable = true;
+                        card.dataset.actionObject = JSON.stringify(ability);
+    
+                        let title = document.createElement('h2');
+                        title.textContent = ability.title;
+                        card.appendChild(title);
+    
+                        let popup = document.createElement('div');
+                        popup.className = 'popup';
+                        card.appendChild(popup);
+    
+                        let description = document.createElement('p');
+                        description.className = 'description';
+                        description.textContent = ability.description;
+                        popup.appendChild(description);
+    
+                        let categoryElem = document.createElement('p');
+                        categoryElem.className = 'category';
+                        categoryElem.textContent = "[ " + category.charAt(0).toUpperCase() + category.slice(1) + " ]";
+                        popup.appendChild(categoryElem);
+    
+                        DOMCacheGetOrSet('playerActionList').appendChild(card);
+                    }
                 }
-            });
+            });    
 
         let dragged;
 
