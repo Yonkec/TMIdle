@@ -26,7 +26,7 @@ export class StateMachine {
 
     update(dt) {
         if (this.current instanceof BattleState && this.current.isBattleOver()) {
-            this.change("death"); // Do we need to break out the different type of battle end states?
+            this.change("death"); // Do we need to break out the different type of so called death states?  Enemy death vs player death etc.
         }else{
             this.current.update(dt);
         }

@@ -10,7 +10,8 @@ export function applyDMG(unit, dmgAmount){
 
     } else if (unit.isDead == false) {
         unit.health -= dmgAMT;
-        
+
+
         if(unit.monsterImage){
             unit.monsterImage.classList.add("shrink");
 
@@ -20,5 +21,10 @@ export function applyDMG(unit, dmgAmount){
         }
     }
 
+    return dmgAMT;
+}
+
+export function calculateAttackDMG(attacker, defender) {
+    let dmgAMT = attacker.baseStats.damage - (defender.baseStats.sta / 2);
     return dmgAMT;
 }

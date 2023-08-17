@@ -6,6 +6,6 @@
     "wis": 1,
     "int": 1,
     "cha": 1,
-    "health": 10,
-    "damage": 2
+    "health": 10.0,
+    "damage": 2.0
 }

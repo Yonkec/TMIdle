@@ -16,12 +16,12 @@ export const populateDOMEventCache = (player) => {
     DOMCacheGetOrSet('tabButtonFight').click();
 }
 
-export const updateAllOfTheThings = (player, mob) => {
+export const updateAllOfTheThings = (player, enemy) => {
 
     //future self - I apologize for not using react or vue
     DOMCacheGetOrSet('coins').innerHTML = player.coins;
     DOMCacheGetOrSet('coinGens').innerHTML = player.coinGens;
-    DOMCacheGetOrSet('enemyHP').innerHTML = mob.health;
+    DOMCacheGetOrSet('enemyHP').innerHTML = enemy.health;
     DOMCacheGetOrSet('playerHP').innerHTML = player.health;
     DOMCacheGetOrSet('totalKills').innerHTML = player.kills;
 

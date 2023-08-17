@@ -6,8 +6,8 @@ import { loadJSONFile } from "./utils.js";
 
 export class Player {
     constructor() {
-        this.maxHP = 100;
-        this.health = 100;
+        this.maxHP = 100.0;
+        this.health = 100.0;
         this.isDead = false;
 
         this.coins = 1000; 
