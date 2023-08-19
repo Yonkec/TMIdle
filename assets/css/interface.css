@@ -41,12 +41,38 @@ body::before {
     margin-left: 20px;
 }
 
+.spacer {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
+
+.monster-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 217, 0, 0.61);
+    margin-bottom: 10px;
+    background-image: url('../images/testbg.png');
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+#monster{
+    width: 300px;
+    height: auto;
+    transition: transform .2s;
+}
+
 
 .health-bar-container {
     position: relative;
@@ -96,16 +122,6 @@ body::before {
     width: 100%;
     margin-left: 10px;
     color:rgb(0, 0, 0);
-}
-
-.monster-container {
-    display: inline-block;
-}
-
-#monster{
-    width: 300px;
-    height: auto;
-    transition: transform .2s;
 }
 
 .shrink {
