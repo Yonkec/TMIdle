@@ -1,4 +1,12 @@
+//update this as new action types are implemented, ensuring an associated function is also developed below
+const actionHandlers = {
+    attack: processAttack,
+    defensive: processDefensive,
+    heal: processHeal,
+    utility: processUtility,
+};
 
+//is this needed or should all of this be moved into the control of processAction and its children?
 export function applyDMG(unit, dmgAmount){
         
     let dmgAMT = dmgAmount;
@@ -24,7 +32,37 @@ export function applyDMG(unit, dmgAmount){
     return dmgAMT;
 }
 
+//deprecating this asap and moving to processAction
 export function calculateAttackDMG(attacker, defender) {
     let dmgAMT = attacker.baseStats.damage - (defender.baseStats.sta / 2);
     return dmgAMT;
+}
+
+export function processAction(action, source, target) {
+    const handler = actionHandlers[action.category];
+
+    if (handler) {
+        handler(action, source, target);
+    } else {
+        console.error(`Unexpected action category: ${action.category}`);
+    }
+}
+
+export function processAttack(action, source, target) {
+    let dmgAMT = action.damage - (target.baseStats.sta / 2);
+    applyDMG(target, dmgAMT);
+}
+
+export function processHeal(action, source) {
+    let healAMT = action.healAmount;
+    source.health += healAMT;
+    
+}
+
+export function processDefensive(action, source, target) {
+    console.log(action, source, target);
+}
+
+export function processUtility(action, source, target) {
+    console.log(action, source, target);
 }

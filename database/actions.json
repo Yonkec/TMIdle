@@ -1,21 +1,21 @@
 {
-    "attacks": [
+    "attack": [
         {
             "id": 1,
             "title": "Basic Attack",
             "description": "A basic attack.",
             "damageType": "physical",
-            "damage": 5
+            "damage": 1
         },
         {
             "id": 2,
             "title": "Fireball",
             "description": "Cast a fiery projectile.",
             "damageType": "fire",
-            "damage": 8
+            "damage": 5
         }
     ],
-    "defensives": [
+    "defensive": [
         {
             "id": 3,
             "title": "Defend",
@@ -31,7 +31,7 @@
             "defenseValue": 0.2
         }
     ],
-    "heals": [
+    "heal": [
         {
             "id": 5,
             "title": "Healing Touch",
@@ -45,7 +45,7 @@
             "healAmount": 20
         }
     ],
-    "utilities": [
+    "utility": [
         {
             "id": 7,
             "title": "Haste",
