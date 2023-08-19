@@ -54,6 +54,7 @@ export function processAttack(action, source, target) {
 }
 
 export function processHeal(action, source) {
+    console.log(action.healAmount, "   ", source.cachedStats.wis);
     let healAMT = action.healAmount * (source.cachedStats.wis / 2);
     source.health += healAMT;
     

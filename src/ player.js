@@ -43,15 +43,22 @@ export class Player {
         return this.cachedStats[statName];
     }
 
-    recalculateCachedStats(statsAffectedArray) {
-        for (let stat of statsAffectedArray) {
-            this.cachedStats[stat] = this.baseStats[stat];
+    // recalculateCachedStats(statsAffectedArray) {
+    //     for (let stat of statsAffectedArray) {
+    //         this.cachedStats[stat] = this.baseStats[stat];
 
-            for (let modifier of this.modifiers) {
-                if (modifier.statsAffected[stat] && (!modifier.condition || modifier.condition())) {
-                    this.cachedStats[stat] += modifier.statsAffected[stat];
-                }
-            }
+    //         for (let modifier of this.modifiers) {
+    //             if (modifier.statsAffected[stat] && (!modifier.condition || modifier.condition())) {
+    //                 this.cachedStats[stat] += modifier.statsAffected[stat];
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    recalculateCachedStats(statsArray) {
+        for (const stat in statsArray) {
+            this.cachedStats[stat] = this.baseStats[stat] + this.inventoryStats[stat];
         }
     }
     
@@ -74,6 +81,8 @@ export class Player {
         this.inventory.populateGrid(); 
         this.inventoryStats = this.inventory.calculateTotalStats();
         updateStatsTable(this.inventoryStats);
+        console.log(this.inventoryStats);
+        this.recalculateCachedStats(this.inventoryStats);
     }
 
     // removeItemFromInventory(itemId) {
