@@ -12,7 +12,7 @@
             "title": "Fireball",
             "description": "Cast a fiery projectile.",
             "damageType": "fire",
-            "damage": 5
+            "damage": 1.5
         }
     ],
     "defensive": [
@@ -28,7 +28,7 @@
             "title": "Dodge",
             "description": "Attempt to evade incoming attacks.",
             "defenseType": "dodge",
-            "defenseValue": 0.2
+            "defenseValue": 10
         }
     ],
     "heal": [
@@ -36,13 +36,13 @@
             "id": 5,
             "title": "Healing Touch",
             "description": "Restore a small amount of health.",
-            "healAmount": 10
+            "healAmount": 3
         },
         {
             "id": 6,
             "title": "Potion",
             "description": "Consume a healing potion.",
-            "healAmount": 20
+            "healAmount": 2
         }
     ],
     "utility": [

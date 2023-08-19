@@ -15,6 +15,7 @@ export class Enemy {
         this.baseStats = [];
         loadJSONFile('database/goblinbrawler.json').then(data => { 
                 this.baseStats = data;
+                this.cachedStats = { ...this.baseStats };
                 this.health = this.calcHP(type, player);
         });
 

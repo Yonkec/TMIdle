@@ -7,5 +7,5 @@
     "int": 1,
     "cha": 1,
     "health": 100.0,
-    "damage": 2.0
+    "damage": 1
 }

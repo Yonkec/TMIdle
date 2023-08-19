@@ -21,26 +21,26 @@ export class ActionQueueManager {
 
                         //ensure we carry forward the category within our new actionCard objects
                         ability.category = category;
-                        
+
                         card.dataset.actionObject = JSON.stringify(ability);
     
                         let title = document.createElement('h2');
                         title.textContent = ability.title;
                         card.appendChild(title);
     
-                        let popup = document.createElement('div');
-                        popup.className = 'popup';
-                        card.appendChild(popup);
+                        // let popup = document.createElement('div');
+                        // popup.className = 'popup';
+                        // card.appendChild(popup);
     
-                        let description = document.createElement('p');
-                        description.className = 'description';
-                        description.textContent = ability.description;
-                        popup.appendChild(description);
+                        // let description = document.createElement('p');
+                        // description.className = 'description';
+                        // description.textContent = ability.description;
+                        // popup.appendChild(description);
     
-                        let categoryElem = document.createElement('p');
-                        categoryElem.className = 'category';
-                        categoryElem.textContent = "[ " + category.charAt(0).toUpperCase() + category.slice(1) + " ]";
-                        popup.appendChild(categoryElem);
+                        // let categoryElem = document.createElement('p');
+                        // categoryElem.className = 'category';
+                        // categoryElem.textContent = "[ " + category.charAt(0).toUpperCase() + category.slice(1) + " ]";
+                        // popup.appendChild(categoryElem);
     
                         DOMCacheGetOrSet('playerActionList').appendChild(card);
                     }
@@ -53,21 +53,21 @@ export class ActionQueueManager {
         document.addEventListener("dragstart", function(event) {
             dragged = event.target;
             dragged.style.opacity = .5;
-            const popup = dragged.querySelector(".popup");
+            // const popup = dragged.querySelector(".popup");
 
-            if (popup) {
-                popup.style.display = 'none';
-            }
+            // if (popup) {
+            //     popup.style.display = 'none';
+            // }
         }, false);
 
         //resets specific values once dragging has ended to return to normal state
         document.addEventListener("dragend", function(event) {
             event.target.style.opacity = "";
-            const popup = event.target.querySelector(".popup");
+            // const popup = event.target.querySelector(".popup");
 
-            if (popup) {
-                popup.style.display = 'none';
-            }
+            // if (popup) {
+            //     popup.style.display = 'none';
+            // }
         }, false);
 
         //attaches a dragover event listener to the HTML element with the ID 'playerActionList'.
@@ -105,11 +105,11 @@ export class ActionQueueManager {
             if (dragged.parentNode.id === 'playerActionQueue' || dragged.parentNode.id === 'playerActionList') {
                 event.preventDefault();
 
-                const popup = event.target.querySelector(".popup");
+                // const popup = event.target.querySelector(".popup");
 
-                if (popup) {
-                    popup.style.display = 'none';
-                }
+                // if (popup) {
+                //     popup.style.display = 'none';
+                // }
 
                 const clonedNode = dragged.cloneNode(true);
                 clonedNode.style.opacity = "";
@@ -144,24 +144,24 @@ export class ActionQueueManager {
             }
         }, false);
 
-        //show the popup when moving away from an action card
-        document.addEventListener("mouseover", function(event) {
-            const card = event.target.closest('.actionCard');
+        // //show the popup when moving away from an action card
+        // document.addEventListener("mouseover", function(event) {
+        //     const card = event.target.closest('.actionCard');
         
-            if (card) {
-                const popup = card.querySelector(".popup");
-                popup.style.display = '';
-            }
-        }, false);
-        //hides the popup when moving away from an action card
-        document.addEventListener("mouseout", function(event) {
-            const card = event.target.closest('.actionCard');
+        //     if (card) {
+        //         const popup = card.querySelector(".popup");
+        //         popup.style.display = '';
+        //     }
+        // }, false);
+        // //hides the popup when moving away from an action card
+        // document.addEventListener("mouseout", function(event) {
+        //     const card = event.target.closest('.actionCard');
         
-            if (card && !card.classList.contains('hovered')) {
-                const popup = card.querySelector(".popup");
-                popup.style.display = 'none';
-            }
-        }, false);
+        //     if (card && !card.classList.contains('hovered')) {
+        //         const popup = card.querySelector(".popup");
+        //         popup.style.display = 'none';
+        //     }
+        // }, false);
     }
 
     //provides the next action within our queue, iterating continually over the available cards

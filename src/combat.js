@@ -49,12 +49,12 @@ export function processAction(action, source, target) {
 }
 
 export function processAttack(action, source, target) {
-    let dmgAMT = action.damage - (target.baseStats.sta / 2);
+    let dmgAMT = (action.damage * source.cachedStats.damage) - (target.baseStats.sta / 2);
     applyDMG(target, dmgAMT);
 }
 
 export function processHeal(action, source) {
-    let healAMT = action.healAmount;
+    let healAMT = action.healAmount * (source.cachedStats.wis / 2);
     source.health += healAMT;
     
 }
