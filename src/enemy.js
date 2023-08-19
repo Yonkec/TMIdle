@@ -9,6 +9,7 @@ export class Enemy {
         this.isDead = false;
         this.type = type;
         this.player = player;
+        this.armor = 0;
         this.monsterImage = DOMCacheGetOrSet("monster");
         this.healthBar = DOMCacheGetOrSet("enemy-health-bar");
 

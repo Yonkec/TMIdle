@@ -34,7 +34,7 @@ export function applyDMG(unit, dmgAmount){
 
 //deprecating this asap and moving to processAction
 export function calculateAttackDMG(attacker, defender) {
-    let dmgAMT = attacker.baseStats.damage - (defender.baseStats.sta / 2);
+    let dmgAMT = attacker.getStat('damage') - (defender.getStat('sta') / 2);
     return dmgAMT;
 }
 
@@ -49,19 +49,18 @@ export function processAction(action, source, target) {
 }
 
 export function processAttack(action, source, target) {
-    let dmgAMT = (action.damage * source.cachedStats.damage) - (target.baseStats.sta / 2);
+    let dmgAMT = (action.damage * source.getStat('damage') - (target.getStat('sta') / 2));
     applyDMG(target, dmgAMT);
 }
 
 export function processHeal(action, source) {
-    console.log(action.healAmount, "   ", source.cachedStats.wis);
-    let healAMT = action.healAmount * (source.cachedStats.wis / 2);
+    let healAMT = action.healAmount * (source.getStat('wis') / 2);
     source.health += healAMT;
-    
 }
 
-export function processDefensive(action, source, target) {
-    console.log(action, source, target);
+export function processDefensive(action, source) {
+    let armorBoost = action.defenseValue;
+    source.armor += armorBoost;
 }
 
 export function processUtility(action, source, target) {

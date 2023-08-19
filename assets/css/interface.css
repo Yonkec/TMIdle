@@ -4,7 +4,7 @@
 
 body {
     display: flex;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Inconsolata, Consolas, Monaco, monospace;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -52,26 +52,42 @@ body::before {
     position: relative;
     width: 80%;
     max-width: 80vw;
-    height: 40px;
+    height: 120px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.individual-health-bar {
+.individual-stat-bar {
     position: relative;
     width: 45%;
-    height: 100%; 
+    height: (33.3% - 4px); 
     border: 1px solid black;
+    box-sizing: border-box;
+}
+
+#player-health-bar, #enemy-health-bar, #player-armor-bar, #enemy-armor-bar, #player-mana-bar, #enemy-mana-bar{
+    width: 50%;
+    height: 100%;
+    align-items:normal;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
 }
 
 #player-health-bar, #enemy-health-bar{
-    width: 50%;
-    height: 100%;
     background-color: green; 
-    align-items:normal;
 }
 
-#player-health-container .health-text {
+#player-armor-bar, #enemy-armor-bar{
+    background-color: rgb(223, 188, 32); 
+}
+
+#player-mana-bar, #enemy-mana-bar{
+    background-color: rgb(33, 114, 185); 
+}
+
+#player-stat-container .stat-bar-text, #enemy-stat-container .stat-bar-text{
     text-align: left;
     background-color: transparent;
     position: absolute;
@@ -79,24 +95,10 @@ body::before {
     transform: translateY(-50%);
     width: 100%;
     margin-left: 10px;
-}
-
-#enemy-health-container .health-text {
-    text-align: left;
-    background-color: transparent;
-    position: absolute;
-    top: 50%;  /* Moves the top edge of the element to the center of the parent */
-    transform: translateY(-50%);  /* Moves the element up by half its height */
-    width: 100%;
-    margin-left: 10px;
+    color:rgb(0, 0, 0);
 }
 
 .monster-container {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; */
     display: inline-block;
 }
 
@@ -310,7 +312,7 @@ body::before {
     margin: 0;
 }
 
-.popup {
+/* .popup {
     position: absolute;
     display: none;
     background-color: rgba(0, 0, 0, 0.8);
@@ -335,4 +337,4 @@ body::before {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} */

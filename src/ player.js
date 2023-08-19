@@ -9,7 +9,7 @@ export class Player {
         this.maxHP = 100.0;
         this.health = 100.0;
         this.isDead = false;
-
+        this.armor = 0;
         this.coins = 1000; 
         this.coinGens = 0;
         this.kills = 0;
@@ -80,8 +80,9 @@ export class Player {
         this.inventory.addItem(item);
         this.inventory.populateGrid(); 
         this.inventoryStats = this.inventory.calculateTotalStats();
+
         updateStatsTable(this.inventoryStats);
-        console.log(this.inventoryStats);
+
         this.recalculateCachedStats(this.inventoryStats);
     }
 
