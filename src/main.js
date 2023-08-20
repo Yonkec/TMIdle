@@ -51,8 +51,8 @@ const stateMachine = new StateMachine(states, changeStateButton);
 // Create a Konva stage
 let stage = new Konva.Stage({
     container: 'konvaCanvas',
-    width: 500,
-    height: 500
+    width: window.innerWidth,
+    height: window.innerHeight * .35
 });
 
 // Create a Konva layer
@@ -61,13 +61,24 @@ stage.add(layer);
 
 Konva.Image.fromURL('assets/images/char1.png', function (characterImage) {
     characterImage.setAttrs({
-        x: 338,
-        y: 231,
+        x: 500,
+        y: 200,
         scaleX: -.4,
         scaleY: .4
     });
     layer.add(characterImage);
 });
+
+Konva.Image.fromURL('assets/images/enemies/rat1.png', function (enemyImage) {
+    enemyImage.setAttrs({
+        x: 800,
+        y: 100,
+        scaleX: .4,
+        scaleY: .4
+    });
+    layer.add(enemyImage);
+});
+
 
 
 
@@ -96,7 +107,6 @@ function gameLoop() {
 
 
     stage.draw();
-    layer.draw();
 
     requestAnimationFrame(gameLoop); 
 }
