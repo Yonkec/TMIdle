@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "type": "buff",
+        "name": "Berserker's Strength",
+        "attribute": "str",
+        "value": 5,
+        "duration": 1,
+        "isBuff": true
+    },
+    {
+        "id": 2,
+        "type": "buff",
+        "name": "Clarity",
+        "attribute": "mana",
+        "value": 2,
+        "duration": 60,
+        "isBuff": true
+    },
+    {
+        "id": 3,
+        "type": "debuff",
+        "name": "Poison",
+        "attribute": "health",
+        "value": -1,
+        "duration": 5,
+        "isBuff": false
+    }
+]

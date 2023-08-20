@@ -48,18 +48,15 @@
     "utility": [
         {
             "id": 7,
-            "title": "Haste",
-            "description": "Greatly increase your agility for a short duration.",
-            "effectDuration": 5,
-            "statType": "agi",
-            "statBoost": 5
+            "title": "Berserker's Strength",
+            "description": "Greatly increase your strength for a short duration.",
+            "appliedEffect": 1
         },
         {
             "id": 8,
             "title": "Clarity",
             "description": "Temporarily boost the rate of your mana regeration.",
-            "effectDuration": 3,
-            "manaAmount": 1
+            "appliedEffect": 2
         }
     ]
 }

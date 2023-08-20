@@ -13,6 +13,7 @@ import { Player } from "./player.js";
 import { Shop } from './shop.js';
 import { populateDOMEventCache, updateAllOfTheThings } from "./events.js";
 import { ActionQueueManager } from './actions.js';
+import { loadEffectsFromJSON } from "./effects.js";
 
 // references necessary for function calls from modules
 window.openTab = openTab;
@@ -35,12 +36,15 @@ const states = {
     death: () => new DeathState(enemy, player, actionQueueManager)
 };
 
+const CombatEffects = loadEffectsFromJSON();
+
 // initialize game objects
 let player = new Player();
 let enemy = new Enemy(50, player);
 let shop = new Shop(player);
 const actionQueueManager = new ActionQueueManager();
 const stateMachine = new StateMachine(states, changeStateButton);
+
 
 // run initialization events
 populateDOMEventCache(player);

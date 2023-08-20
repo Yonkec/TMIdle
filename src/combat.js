@@ -50,7 +50,7 @@ export function calculateMitigation(damage, source, target){
 }
 
 //deprecating this asap and moving to processAction once enemy abilities are implemented
-export function calculateAttackDMG(source, target) {
+export function calculateAttackDMG(source) {
     let dmgAMT = source.getStat('damage');
     return dmgAMT;
 }

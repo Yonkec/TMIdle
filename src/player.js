@@ -16,6 +16,7 @@ export class Player {
         this.coins = 1000; 
         this.coinGens = 0;
         this.kills = 0;
+
         this.inventory = new Inventory(this);
         this.inventoryStats = {};
 
@@ -26,38 +27,33 @@ export class Player {
             this.cachedStats = { ...this.baseStats };
         });
 
-        this.modifiers = [];
+        this.activeEffects = [];
     }
 
-    // addModifier(modifier) {
-    //     this.modifiers.push(modifier);
-    //     this.recalculateCachedStats(Object.keys(modifier.statsAffected));
-    // }
+    //undecided on how to structure effects, going with a record+int approach for now
+    applyEffect(effect) {
+        this.activeEffects.push({
+            effect: effect,
+            remainingDuration: effect.duration
+        });
+    }
 
-    // removeModifier(modifierId) {
-    //     const index = this.modifiers.findIndex(mod => mod.id === modifierId);
-    //     if (index !== -1) {
-    //         const [removedModifier] = this.modifiers.splice(index, 1);
-    //         this.recalculateCachedStats(Object.keys(removedModifier.statsAffected));
-    //     }
-    // }
+    updateEffects() {
+        for (let i = this.activeEffects.length - 1; i >= 0; i--) {
+            const activeEffect = this.activeEffects[i];
+            activeEffect.remainingDuration--;
+
+            if (activeEffect.remainingDuration <= 0) {
+                //remove effect here, but does this cancel it midway in the current tick?
+                //this might remove it and steal the benefit/penalty of the final tick - TBD
+                this.activeEffects.splice(i, 1);
+            }
+        }
+    }
 
     getStat(statName) {
         return this.cachedStats[statName];
     }
-
-    // recalculateCachedStats(statsAffectedArray) {
-    //     for (let stat of statsAffectedArray) {
-    //         this.cachedStats[stat] = this.baseStats[stat];
-
-    //         for (let modifier of this.modifiers) {
-    //             if (modifier.statsAffected[stat] && (!modifier.condition || modifier.condition())) {
-    //                 this.cachedStats[stat] += modifier.statsAffected[stat];
-    //             }
-    //         }
-    //     }
-    // }
-
 
     recalculateCachedStats(statsArray) {
         for (const stat in statsArray) {
