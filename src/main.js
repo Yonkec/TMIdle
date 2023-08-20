@@ -7,6 +7,8 @@ import { DeathState } from "./states/DeathState.js";
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { computeDeltaTime } from "./utils.js";
 
+import Konva from "konva";
+
 import { openTab, updateHealthBar, updateArmorBar, updateManaBar } from "./interface.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./player.js";
@@ -46,6 +48,29 @@ const actionQueueManager = new ActionQueueManager();
 const stateMachine = new StateMachine(states, changeStateButton);
 
 
+// Create a Konva stage
+let stage = new Konva.Stage({
+    container: 'konvaCanvas',
+    width: 500,
+    height: 500
+});
+
+// Create a Konva layer
+let layer = new Konva.Layer();
+stage.add(layer);
+
+Konva.Image.fromURL('assets/images/char1.png', function (characterImage) {
+    characterImage.setAttrs({
+        x: 338,
+        y: 231,
+        scaleX: -.4,
+        scaleY: .4
+    });
+    layer.add(characterImage);
+});
+
+
+
 // run initialization events
 populateDOMEventCache(player);
 actionQueueManager.populateActionCards();
@@ -68,6 +93,10 @@ function gameLoop() {
     updateManaBar(enemy, enemyManaBar);
 
     stateMachine.update(dt);
+
+
+    stage.draw();
+    layer.draw();
 
     requestAnimationFrame(gameLoop); 
 }
