@@ -22,9 +22,9 @@ export function openTab(evt, tabName) {
 } 
 
 export function updateHealthBar(entity, healthBar, monsterImage) {
-    let screenWidth = window.innerWidth; // Get the viewport width
-    let maxWidth = screenWidth * 0.36;
-    let calculatedWidth = maxWidth * (entity.health / entity.maxHP); // Calculate the width based on the health percentage
+    let screenWidth = window.innerWidth; //get the viewport width
+    let maxWidth = screenWidth * 0.3449; //fix this once the UI settles down
+    let calculatedWidth = maxWidth * (entity.health / entity.maxHP); //calculate the width based on the health percentage
     healthBar.style.width = calculatedWidth + "px";
 
     if (entity.health <= 0) {

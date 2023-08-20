@@ -60,7 +60,7 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 5px solid rgba(255, 217, 0, 0.61);
+    border: 5px solid rgba(110, 0, 0, 0.61);
     margin-bottom: 10px;
     background-image: url('../images/backgrounds/testbg5.jpg');
     /* background-size: cover;
@@ -88,7 +88,7 @@ body::before {
     position: relative;
     width: 45%;
     height: (33.3% - 4px); 
-    border: 1px solid black;
+    border: 3px solid rgba(110, 0, 0, 0.61);
     box-sizing: border-box;
 }
 
@@ -106,11 +106,11 @@ body::before {
 }
 
 #player-armor-bar, #enemy-armor-bar{
-    background-color: rgb(223, 188, 32); 
+    background-color: rgb(116, 115, 115); 
 }
 
 #player-mana-bar, #enemy-mana-bar{
-    background-color: rgb(33, 114, 185); 
+    background-color: rgb(24, 96, 159); 
 }
 
 #player-stat-container .stat-bar-text, #enemy-stat-container .stat-bar-text{
@@ -121,7 +121,6 @@ body::before {
     transform: translateY(-50%);
     width: 100%;
     margin-left: 10px;
-    color:rgb(0, 0, 0);
 }
 
 .shrink {

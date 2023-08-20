@@ -6,6 +6,8 @@ export class Enemy {
     constructor(type, player) {
 
         this.maxHP = 0.0;
+        this.maxAP = 100;
+        this.maxMP = 100;
         this.isDead = false;
         this.type = type;
         this.player = player;
@@ -24,6 +26,10 @@ export class Enemy {
 
         DOMCacheGetOrSet('monster').addEventListener('click', () => applyDMG(this, 1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
+    }
+
+    getStat(statName) {
+        return this.cachedStats[statName];
     }
     
     resetMob(){

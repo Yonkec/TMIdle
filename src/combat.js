@@ -6,6 +6,16 @@ const actionHandlers = {
     utility: processUtility,
 };
 
+export function processAction(action, source, target) {
+    const handler = actionHandlers[action.category];
+
+    if (handler) {
+        handler(action, source, target);
+    } else {
+        console.error(`Unexpected action category: ${action.category}`);
+    }
+}
+
 //is this needed or should all of this be moved into the control of processAction and its children?
 export function applyDMG(unit, dmgAmount){
         
@@ -32,24 +42,20 @@ export function applyDMG(unit, dmgAmount){
     return dmgAMT;
 }
 
-//deprecating this asap and moving to processAction
-export function calculateAttackDMG(attacker, defender) {
-    let dmgAMT = attacker.getStat('damage') - (defender.getStat('sta') / 2);
-    return dmgAMT;
+export function calculateMitigation(damage, source, target){
+
+
 }
 
-export function processAction(action, source, target) {
-    const handler = actionHandlers[action.category];
-
-    if (handler) {
-        handler(action, source, target);
-    } else {
-        console.error(`Unexpected action category: ${action.category}`);
-    }
+//deprecating this asap and moving to processAction once enemy abilities are implemented
+export function calculateAttackDMG(source, target) {
+    let dmgAMT = source.getStat('damage') - (target.getStat('sta') / 2);
+    return dmgAMT;
 }
 
 export function processAttack(action, source, target) {
     let dmgAMT = (action.damage * source.getStat('damage') - (target.getStat('sta') / 2));
+    calculateMitigation(dmgAMT, source, target)
     applyDMG(target, dmgAMT);
 }
 
