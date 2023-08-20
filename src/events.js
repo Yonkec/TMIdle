@@ -23,6 +23,10 @@ export const updateAllOfTheThings = (player, enemy) => {
     DOMCacheGetOrSet('coinGens').innerHTML = player.coinGens;
     DOMCacheGetOrSet('enemyHP').innerHTML = enemy.health;
     DOMCacheGetOrSet('playerHP').innerHTML = player.health;
+    DOMCacheGetOrSet('enemyAP').innerHTML = enemy.armor;
+    DOMCacheGetOrSet('playerAP').innerHTML = player.armor;
+    DOMCacheGetOrSet('enemyMP').innerHTML = enemy.mana;
+    DOMCacheGetOrSet('playerMP').innerHTML = player.mana;
     DOMCacheGetOrSet('totalKills').innerHTML = player.kills;
 
     let nextCost = Math.floor(10 * Math.pow(1.1,player.coinGens));

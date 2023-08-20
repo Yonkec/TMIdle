@@ -23,9 +23,9 @@ export function openTab(evt, tabName) {
 
 export function updateHealthBar(entity, healthBar, monsterImage) {
     let screenWidth = window.innerWidth; // Get the viewport width
-    let maxWidth = screenWidth * 0.36; // Set the maximum width of each individual bar to align with the spacing of both
+    let maxWidth = screenWidth * 0.36;
     let calculatedWidth = maxWidth * (entity.health / entity.maxHP); // Calculate the width based on the health percentage
-    healthBar.style.width = calculatedWidth + "px"; // Set the width in pixels
+    healthBar.style.width = calculatedWidth + "px";
 
     if (entity.health <= 0) {
         if (monsterImage) {
@@ -36,6 +36,20 @@ export function updateHealthBar(entity, healthBar, monsterImage) {
     } else if (entity.health < entity.maxHP * .25) {
         healthBar.style.backgroundColor = "orange";
     }
+}
+
+export function updateArmorBar(entity, armorBar) {
+    let screenWidth = window.innerWidth;
+    let maxWidth = screenWidth * 0.36; 
+    let calculatedWidth = maxWidth * (entity.armor / entity.maxAP); 
+    armorBar.style.width = calculatedWidth + "px";
+}
+
+export function updateManaBar(entity, manaBar) {
+    let screenWidth = window.innerWidth; 
+    let maxWidth = screenWidth * 0.36; 
+    let calculatedWidth = maxWidth * (entity.armor / entity.maxAP);
+    manaBar.style.width = calculatedWidth + "px";
 }
 
 export function updateStatsTable(inventoryStats) {

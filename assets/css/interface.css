@@ -62,7 +62,7 @@ body::before {
     align-items: center;
     border: 5px solid rgba(255, 217, 0, 0.61);
     margin-bottom: 10px;
-    background-image: url('../images/testbg5.jpg');
+    background-image: url('../images/backgrounds/testbg5.jpg');
     /* background-size: cover;
     background-repeat: no-repeat; */
 }

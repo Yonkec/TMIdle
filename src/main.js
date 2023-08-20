@@ -7,9 +7,9 @@ import { DeathState } from "./states/DeathState.js";
 import { DOMCacheGetOrSet } from "./DOMcache.js";
 import { computeDeltaTime } from "./utils.js";
 
-import { openTab, updateHealthBar } from "./interface.js";
+import { openTab, updateHealthBar, updateArmorBar, updateManaBar } from "./interface.js";
 import { Enemy } from "./enemy.js";
-import { Player } from "./ player.js";
+import { Player } from "./player.js";
 import { Shop } from './shop.js';
 import { populateDOMEventCache, updateAllOfTheThings } from "./events.js";
 import { ActionQueueManager } from './actions.js';
@@ -20,8 +20,15 @@ window.openTab = openTab;
 // initialize vars
 const changeStateButton = DOMCacheGetOrSet('changeState');
 const monsterImage = DOMCacheGetOrSet("monster");
+
+//need to move this out of the gameplay loop and look into updating these only on state changes
 const playerHealthBar = DOMCacheGetOrSet("player-health-bar");
 const enemyHealthBar = DOMCacheGetOrSet("enemy-health-bar");
+const playerArmorBar = DOMCacheGetOrSet("player-armor-bar");
+const enemyArmorBar = DOMCacheGetOrSet("enemy-armor-bar");
+const playerManaBar = DOMCacheGetOrSet("player-mana-bar");
+const enemyManaBar = DOMCacheGetOrSet("enemy-mana-bar");
+
 const states = {
     battle: () => new BattleState(enemy, player, actionQueueManager),
     idle: () => new IdleState(enemy, player, actionQueueManager),
@@ -46,8 +53,15 @@ function gameLoop() {
     const dt = computeDeltaTime();
 
     updateAllOfTheThings(player, enemy);
-    updateHealthBar(enemy, enemyHealthBar, monsterImage);
+
+    //stop doing this per frame this only changes per combat state
     updateHealthBar(player, playerHealthBar );
+    updateArmorBar(player, playerArmorBar );
+    updateManaBar(player, playerManaBar);
+
+    updateHealthBar(enemy, enemyHealthBar, monsterImage);
+    updateArmorBar(enemy, enemyArmorBar );
+    updateManaBar(enemy, enemyManaBar);
 
     stateMachine.update(dt);
 
