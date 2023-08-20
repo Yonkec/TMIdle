@@ -102,7 +102,7 @@ body::before {
 }
 
 #player-health-bar, #enemy-health-bar{
-    background-color: green; 
+    background-color: rgb(13, 105, 13); 
 }
 
 #player-armor-bar, #enemy-armor-bar{

@@ -43,19 +43,21 @@ export function applyDMG(unit, dmgAmount){
 }
 
 export function calculateMitigation(damage, source, target){
-
-
+    //the idea is that the more armor you have the smaller the damage incurred will be - but your armor is constantly decaying elsewhere
+    let mitigatedDMG = (damage * (1 - (target.armor / 100)));
+    console.log(mitigatedDMG);
+    return mitigatedDMG;
 }
 
 //deprecating this asap and moving to processAction once enemy abilities are implemented
 export function calculateAttackDMG(source, target) {
-    let dmgAMT = source.getStat('damage') - (target.getStat('sta') / 2);
+    let dmgAMT = source.getStat('damage');
     return dmgAMT;
 }
 
 export function processAttack(action, source, target) {
     let dmgAMT = (action.damage * source.getStat('damage') - (target.getStat('sta') / 2));
-    calculateMitigation(dmgAMT, source, target)
+    dmgAMT = calculateMitigation(dmgAMT, source, target);
     applyDMG(target, dmgAMT);
 }
 

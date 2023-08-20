@@ -40,15 +40,15 @@ export function updateHealthBar(entity, healthBar, monsterImage) {
 
 export function updateArmorBar(entity, armorBar) {
     let screenWidth = window.innerWidth;
-    let maxWidth = screenWidth * 0.36; 
+    let maxWidth = screenWidth * 0.3449; 
     let calculatedWidth = maxWidth * (entity.armor / entity.maxAP); 
     armorBar.style.width = calculatedWidth + "px";
 }
 
 export function updateManaBar(entity, manaBar) {
     let screenWidth = window.innerWidth; 
-    let maxWidth = screenWidth * 0.36; 
-    let calculatedWidth = maxWidth * (entity.armor / entity.maxAP);
+    let maxWidth = screenWidth * 0.3449; 
+    let calculatedWidth = maxWidth * (entity.mana / entity.maxMP);
     manaBar.style.width = calculatedWidth + "px";
 }
 

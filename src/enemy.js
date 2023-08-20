@@ -1,5 +1,4 @@
 import { DOMCacheGetOrSet } from "./DOMcache.js";
-import { applyDMG } from "./combat.js";
 import { loadJSONFile } from "./utils.js";
 
 export class Enemy {
@@ -11,8 +10,8 @@ export class Enemy {
         this.isDead = false;
         this.type = type;
         this.player = player;
-        this.armor = 10;
-        this.mana = 10;
+        this.armor = 50;
+        this.mana = 100;
         this.monsterImage = DOMCacheGetOrSet("monster");
         this.healthBar = DOMCacheGetOrSet("enemy-health-bar");
 
@@ -23,8 +22,6 @@ export class Enemy {
                 this.health = this.calcHP(type, player);
         });
 
-
-        DOMCacheGetOrSet('monster').addEventListener('click', () => applyDMG(this, 1));
         DOMCacheGetOrSet('resetMob').addEventListener('click', () => this.resetMob());
     }
 
